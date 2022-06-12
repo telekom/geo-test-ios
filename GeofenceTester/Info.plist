@@ -21,5 +21,13 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This is a region monitoring testing app. It needs background location updates</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>In Use will not do the trick</string>
 </dict>
 </plist>

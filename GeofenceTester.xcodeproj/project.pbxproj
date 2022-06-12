@@ -13,6 +13,8 @@
 		CB655F6D28534E2600EBCABA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB655F6B28534E2600EBCABA /* Main.storyboard */; };
 		CB655F6F28534E2700EBCABA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB655F6E28534E2700EBCABA /* Assets.xcassets */; };
 		CB655F7228534E2700EBCABA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB655F7028534E2700EBCABA /* LaunchScreen.storyboard */; };
+		CB655F7C2856854E00EBCABA /* RegionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB655F7B2856854E00EBCABA /* RegionsTableViewController.swift */; };
+		CB655F7E2856A43B00EBCABA /* RegionsDetailControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB655F7D2856A43B00EBCABA /* RegionsDetailControllerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		CB655F6E28534E2700EBCABA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB655F7128534E2700EBCABA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB655F7328534E2700EBCABA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB655F7B2856854E00EBCABA /* RegionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionsTableViewController.swift; sourceTree = "<group>"; };
+		CB655F7D2856A43B00EBCABA /* RegionsDetailControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionsDetailControllerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 				CB655F6528534E2600EBCABA /* AppDelegate.swift */,
 				CB655F6728534E2600EBCABA /* SceneDelegate.swift */,
 				CB655F6928534E2600EBCABA /* ViewController.swift */,
+				CB655F7B2856854E00EBCABA /* RegionsTableViewController.swift */,
+				CB655F7D2856A43B00EBCABA /* RegionsDetailControllerViewController.swift */,
 				CB655F6B28534E2600EBCABA /* Main.storyboard */,
 				CB655F6E28534E2700EBCABA /* Assets.xcassets */,
 				CB655F7028534E2700EBCABA /* LaunchScreen.storyboard */,
@@ -140,7 +146,9 @@
 			files = (
 				CB655F6A28534E2600EBCABA /* ViewController.swift in Sources */,
 				CB655F6628534E2600EBCABA /* AppDelegate.swift in Sources */,
+				CB655F7C2856854E00EBCABA /* RegionsTableViewController.swift in Sources */,
 				CB655F6828534E2600EBCABA /* SceneDelegate.swift in Sources */,
+				CB655F7E2856A43B00EBCABA /* RegionsDetailControllerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
