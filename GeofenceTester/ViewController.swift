@@ -179,10 +179,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     // Navigation Handling
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let regionsController = segue.destination as? RegionsTableViewController {
-            regionsController.regions = locationManager.monitoredRegions.sorted(by: { a, b in
-                a.identifier > b.identifier
-            })
+        if let regionsController = segue.destination as? RegionsDetailControllerViewController {
+            regionsController.regions = locationManager.monitoredRegions
         }
     }
 }
