@@ -16,6 +16,7 @@
 		CB655F7228534E2700EBCABA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB655F7028534E2700EBCABA /* LaunchScreen.storyboard */; };
 		CB655F7E2856A43B00EBCABA /* RegionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB655F7D2856A43B00EBCABA /* RegionsListViewController.swift */; };
 		CBE711EF2868EE36008F51C4 /* RegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE711EE2868EE36008F51C4 /* RegionViewController.swift */; };
+		CBE711F1286915A8008F51C4 /* EventRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE711F0286915A8008F51C4 /* EventRecord.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		CB655F7328534E2700EBCABA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB655F7D2856A43B00EBCABA /* RegionsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionsListViewController.swift; sourceTree = "<group>"; };
 		CBE711EE2868EE36008F51C4 /* RegionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionViewController.swift; sourceTree = "<group>"; };
+		CBE711F0286915A8008F51C4 /* EventRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRecord.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				CB655F6928534E2600EBCABA /* ViewController.swift */,
 				CB655F7D2856A43B00EBCABA /* RegionsListViewController.swift */,
 				CBE711EE2868EE36008F51C4 /* RegionViewController.swift */,
+				CBE711F0286915A8008F51C4 /* EventRecord.swift */,
 				CB268B9F285A19DC00B16C3A /* PersistantStorage.swift */,
 				CB655F6B28534E2600EBCABA /* Main.storyboard */,
 				CB655F6E28534E2700EBCABA /* Assets.xcassets */,
@@ -148,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB655F6A28534E2600EBCABA /* ViewController.swift in Sources */,
+				CBE711F1286915A8008F51C4 /* EventRecord.swift in Sources */,
 				CB655F6628534E2600EBCABA /* AppDelegate.swift in Sources */,
 				CBE711EF2868EE36008F51C4 /* RegionViewController.swift in Sources */,
 				CB655F6828534E2600EBCABA /* SceneDelegate.swift in Sources */,
