@@ -13,6 +13,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var monitoringButton: UIButton!
     @IBOutlet var errorView: UITextView!
     @IBOutlet var locationField: UITextField!
+    let storage = PersistantStorage<EventRecord>()
     
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation? {
@@ -75,6 +76,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         content.title = "Region Entered"
         content.body = "\(region.identifier) \(Date())"
         
+        let eventRecord = EventRecord(event: .ENTER,
+                                      identifier: region.identifier,
+                                      date: Date())
+        do {
+            try storage.store(eventRecord)
+        }
+        catch let error {
+            self.appendError(error)
+        }
         let request = UNNotificationRequest(identifier: region.identifier,
                                             content: content,
                                             trigger: nil)
@@ -86,6 +96,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         content.title = "Region Exited"
         content.body = "\(region.identifier) \(Date())"
         
+        let eventRecord = EventRecord(event: .EXIT,
+                                      identifier: region.identifier,
+                                      date: Date())
+        do {
+            try storage.store(eventRecord)
+        }
+        catch let error {
+            self.appendError(error)
+        }
         let request = UNNotificationRequest(identifier: region.identifier,
                                             content: content,
                                             trigger: nil)

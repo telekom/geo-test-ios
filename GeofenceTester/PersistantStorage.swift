@@ -16,17 +16,17 @@ class PersistantStorage<T: Codable> {
     private let encoder = JSONEncoder()
     private let kFilename = "geolocator.log"
     
-    init() throws {
-        let url = try fileURL()
-        let jsonData: Data
+    init() {
         do {
-            jsonData = try Data(contentsOf: url)
+            let url = try fileURL()
+            let jsonData = try Data(contentsOf: url)
+            // Well, it really should throw, but …
+            storage = try decoder.decode([T].self, from: jsonData)
         }
         catch {
             // File does not exist
             return
         }
-        storage = try decoder.decode([T].self, from: jsonData)
     }
     
     func store(_ object: T) throws {
