@@ -28,7 +28,7 @@ class RegionViewController: UIViewController {
         }) {
             locationManager.stopMonitoring(for: region)
         }
-        self.dismiss(animated: true)
+        self.performSegue(withIdentifier: "unwindSegue", sender: self)
     }
     
     /*
