@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21179.7" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="spF-mv-FWq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="spF-mv-FWq">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21169.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,14 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VoG-xx-xJh">
-                                <rect key="frame" x="123" y="150.5" width="168.5" height="34.5"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Set Current Region"/>
-                                <connections>
-                                    <action selector="setMonitoring:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4xa-xb-N13"/>
-                                </connections>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Fkj-ap-RaY">
                                 <rect key="frame" x="20" y="475" width="374" height="387"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -33,17 +24,17 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mcn-jb-Dun">
-                                <rect key="frame" x="115.5" y="108" width="183" height="34.5"/>
+                                <rect key="frame" x="127.5" y="108" width="159" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Get Current Location"/>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9qx-GH-il9">
-                                <rect key="frame" x="20" y="193" width="374" height="34"/>
+                                <rect key="frame" x="20" y="147" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hLi-CB-Mcm">
-                                <rect key="frame" x="158" y="277.5" width="98.5" height="34.5"/>
+                                <rect key="frame" x="163.5" y="228" width="87.5" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Test Push"/>
                                 <connections>
@@ -51,7 +42,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmy-JI-HeE">
-                                <rect key="frame" x="141.5" y="235" width="131.5" height="34.5"/>
+                                <rect key="frame" x="149.5" y="189" width="115" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Show Regions"/>
                                 <connections>
@@ -68,11 +59,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9qx-GH-il9" secondAttribute="trailing" constant="20" id="BcV-ug-2mw"/>
                             <constraint firstItem="Mcn-jb-Dun" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Frx-Wm-X5p"/>
                             <constraint firstItem="hLi-CB-Mcm" firstAttribute="top" secondItem="Jmy-JI-HeE" secondAttribute="bottom" constant="8" symbolic="YES" id="Gkg-05-Fmx"/>
-                            <constraint firstItem="VoG-xx-xJh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HP9-e4-aSk"/>
-                            <constraint firstItem="VoG-xx-xJh" firstAttribute="top" secondItem="Mcn-jb-Dun" secondAttribute="bottom" constant="8" symbolic="YES" id="KNU-6N-g7S"/>
-                            <constraint firstItem="9qx-GH-il9" firstAttribute="top" secondItem="VoG-xx-xJh" secondAttribute="bottom" constant="8" symbolic="YES" id="Osc-EP-heZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Fkj-ap-RaY" secondAttribute="trailing" constant="20" id="OuE-JS-mHL"/>
                             <constraint firstItem="9qx-GH-il9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="RIU-gC-4Ik"/>
+                            <constraint firstItem="9qx-GH-il9" firstAttribute="top" secondItem="Mcn-jb-Dun" secondAttribute="bottom" constant="8" symbolic="YES" id="SJ5-Wh-iyI"/>
                             <constraint firstItem="Fkj-ap-RaY" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="cvg-S5-8cQ"/>
                             <constraint firstItem="Jmy-JI-HeE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ib3-BK-B9B"/>
                             <constraint firstItem="Jmy-JI-HeE" firstAttribute="top" secondItem="9qx-GH-il9" secondAttribute="bottom" constant="8" symbolic="YES" id="nxY-Um-dBF"/>
@@ -83,42 +72,59 @@
                     <connections>
                         <outlet property="errorView" destination="Fkj-ap-RaY" id="5Se-tA-Q3u"/>
                         <outlet property="locationField" destination="9qx-GH-il9" id="wNQ-KS-MJB"/>
-                        <outlet property="monitoringButton" destination="VoG-xx-xJh" id="N7c-3x-eY0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-72" y="80"/>
         </scene>
-        <!--View Controller-->
+        <!--Region View Controller-->
         <scene sceneID="YKZ-k1-aQM">
             <objects>
-                <viewController id="abz-U4-dF9" sceneMemberID="viewController">
+                <viewController id="abz-U4-dF9" customClass="RegionViewController" customModule="GeofenceTester" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xr6-ey-GEK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRa-cH-jsG">
-                                <rect key="frame" x="170" y="388" width="74" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRa-cH-jsG">
+                                <rect key="frame" x="174" y="405.5" width="66" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Delete">
                                     <color key="baseBackgroundColor" systemColor="systemRedColor"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="deleteRegion" destination="abz-U4-dF9" eventType="touchUpInside" id="vlV-xU-X75"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YxR-jO-lcY">
+                                <rect key="frame" x="20" y="376.5" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Vg1-62-cZ1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="pRa-cH-jsG" firstAttribute="centerX" secondItem="Xr6-ey-GEK" secondAttribute="centerX" id="03A-yH-lP1"/>
+                            <constraint firstItem="YxR-jO-lcY" firstAttribute="leading" secondItem="Vg1-62-cZ1" secondAttribute="leading" constant="20" id="ZrX-sG-HQ1"/>
+                            <constraint firstItem="pRa-cH-jsG" firstAttribute="top" secondItem="YxR-jO-lcY" secondAttribute="bottom" constant="8" symbolic="YES" id="eyy-bu-32T"/>
+                            <constraint firstItem="pRa-cH-jsG" firstAttribute="centerY" secondItem="Xr6-ey-GEK" secondAttribute="centerY" id="rRR-Yx-gts"/>
+                            <constraint firstItem="Vg1-62-cZ1" firstAttribute="trailing" secondItem="YxR-jO-lcY" secondAttribute="trailing" constant="20" id="yio-JI-Gcu"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="identifierLabel" destination="YxR-jO-lcY" id="UrI-z9-atr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="USa-UM-Vqe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-72" y="878"/>
+            <point key="canvasLocation" x="-72.463768115942031" y="877.90178571428567"/>
         </scene>
-        <!--Regions Detail Controller View Controller-->
+        <!--Regions List View Controller-->
         <scene sceneID="Muk-EI-eLV">
             <objects>
-                <viewController id="Mm7-Ts-hYc" customClass="RegionsDetailControllerViewController" customModule="GeofenceTester" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Mm7-Ts-hYc" customClass="RegionsListViewController" customModule="GeofenceTester" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lrv-Dt-3tV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -168,7 +174,7 @@
     </scenes>
     <resources>
         <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
