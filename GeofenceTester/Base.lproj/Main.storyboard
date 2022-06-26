@@ -149,7 +149,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="1LR-FO-FdF">
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="organize" id="O8y-4g-daL"/>
+                            <barButtonItem systemItem="organize" id="O8y-4g-daL">
+                                <connections>
+                                    <segue destination="qM3-Fa-wHS" kind="show" id="wyd-fL-lg7"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem systemItem="add" id="BJ6-F4-XfY">
                                 <connections>
                                     <action selector="addRegion" destination="Mm7-Ts-hYc" id="1H1-ve-oEg"/>
@@ -165,6 +169,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8T9-hw-ljf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-997" y="878"/>
+        </scene>
+        <!--Events Table View Controller-->
+        <scene sceneID="OR8-K7-icH">
+            <objects>
+                <tableViewController id="qM3-Fa-wHS" customClass="EventsTableViewController" customModule="GeofenceTester" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="VsJ-ND-XCw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Lrp-57-Lec">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lrp-57-Lec" id="oAi-8m-7Ve">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="qM3-Fa-wHS" id="4b9-xh-lHT"/>
+                            <outlet property="delegate" destination="qM3-Fa-wHS" id="h7R-j4-Hd1"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="1uK-dd-Sf2">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="9YG-qv-vKZ">
+                            <connections>
+                                <action selector="share" destination="qM3-Fa-wHS" id="jhI-KK-oF0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mgR-Lf-2xM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-992" y="1597"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="E3L-WX-VYA">

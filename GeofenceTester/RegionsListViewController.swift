@@ -12,6 +12,7 @@ import os.log
 class RegionsListViewController: UIViewController, MKMapViewDelegate {
 
     var locationManager: CLLocationManager!
+    var storage: PersistantStorage<EventRecord>!
     private var logger = Logger()
     
     @IBOutlet var mapView: MKMapView!
@@ -123,7 +124,7 @@ class RegionsListViewController: UIViewController, MKMapViewDelegate {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let detailView = segue.destination as? RegionViewController {
+        if let destination = segue.destination as? RegionViewController {
             guard let annotation = sender as? MKAnnotation else {
                 let logger = Logger()
                 logger.log(level: .error, "Sender was not MKAnnotation")
@@ -132,8 +133,12 @@ class RegionsListViewController: UIViewController, MKMapViewDelegate {
             guard let identifier = annotation.title else {
                 return
             }
-            detailView.identifier = identifier
-            detailView.locationManager = locationManager
+            destination.identifier = identifier
+            destination.locationManager = locationManager
+        }
+        
+        if let destination = segue.destination as? EventsTableViewController {
+            destination.storage = storage
         }
     }
     
