@@ -115,9 +115,11 @@
                     </view>
                     <connections>
                         <outlet property="identifierLabel" destination="YxR-jO-lcY" id="UrI-z9-atr"/>
+                        <segue destination="cbS-Gs-Y1z" kind="unwind" identifier="unwindSegue" unwindAction="unwindActionWithUnwindSegue:" id="Or5-7R-nLn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="USa-UM-Vqe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="cbS-Gs-Y1z" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-72.463768115942031" y="877.90178571428567"/>
         </scene>
@@ -145,7 +147,16 @@
                             <constraint firstItem="PTq-kR-Xju" firstAttribute="leading" secondItem="Cgu-SU-7L9" secondAttribute="leading" id="ljU-vx-Efw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="1LR-FO-FdF"/>
+                    <navigationItem key="navigationItem" id="1LR-FO-FdF">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="organize" id="O8y-4g-daL"/>
+                            <barButtonItem systemItem="add" id="BJ6-F4-XfY">
+                                <connections>
+                                    <action selector="addRegion" destination="Mm7-Ts-hYc" id="1H1-ve-oEg"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="PTq-kR-Xju" id="Xpb-Pa-2kJ"/>
                         <segue destination="abz-U4-dF9" kind="showDetail" identifier="RegionDetail" id="r59-b2-f5b"/>
