@@ -171,6 +171,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let regionsController = segue.destination as? RegionsListViewController {
             regionsController.locationManager = locationManager
+            regionsController.storage = storage
         }
     }
 }

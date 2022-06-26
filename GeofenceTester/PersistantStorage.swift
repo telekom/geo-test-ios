@@ -11,7 +11,7 @@ import Foundation
 
 class PersistantStorage<T: Codable> {
     
-    private var storage = Array<T>()
+    public private(set) var storage = Array<T>()
     private let decoder = JSONDecoder()
     private let encoder = JSONEncoder()
     private let kFilename = "geolocator.log"

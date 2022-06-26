@@ -17,6 +17,7 @@
 		CB655F7E2856A43B00EBCABA /* RegionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB655F7D2856A43B00EBCABA /* RegionsListViewController.swift */; };
 		CBE711EF2868EE36008F51C4 /* RegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE711EE2868EE36008F51C4 /* RegionViewController.swift */; };
 		CBE711F1286915A8008F51C4 /* EventRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE711F0286915A8008F51C4 /* EventRecord.swift */; };
+		CBE711F3286920FD008F51C4 /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE711F2286920FD008F51C4 /* EventsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		CB655F7D2856A43B00EBCABA /* RegionsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionsListViewController.swift; sourceTree = "<group>"; };
 		CBE711EE2868EE36008F51C4 /* RegionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionViewController.swift; sourceTree = "<group>"; };
 		CBE711F0286915A8008F51C4 /* EventRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRecord.swift; sourceTree = "<group>"; };
+		CBE711F2286920FD008F51C4 /* EventsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				CB655F6928534E2600EBCABA /* ViewController.swift */,
 				CB655F7D2856A43B00EBCABA /* RegionsListViewController.swift */,
 				CBE711EE2868EE36008F51C4 /* RegionViewController.swift */,
+				CBE711F2286920FD008F51C4 /* EventsTableViewController.swift */,
 				CBE711F0286915A8008F51C4 /* EventRecord.swift */,
 				CB268B9F285A19DC00B16C3A /* PersistantStorage.swift */,
 				CB655F6B28534E2600EBCABA /* Main.storyboard */,
@@ -156,6 +159,7 @@
 				CBE711EF2868EE36008F51C4 /* RegionViewController.swift in Sources */,
 				CB655F6828534E2600EBCABA /* SceneDelegate.swift in Sources */,
 				CB655F7E2856A43B00EBCABA /* RegionsListViewController.swift in Sources */,
+				CBE711F3286920FD008F51C4 /* EventsTableViewController.swift in Sources */,
 				CB268BA0285A19DC00B16C3A /* PersistantStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
