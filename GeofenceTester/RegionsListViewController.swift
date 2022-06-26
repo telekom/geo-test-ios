@@ -7,23 +7,27 @@
 
 import UIKit
 import MapKit
+import os.log
 
-class RegionsDetailControllerViewController: UIViewController, MKMapViewDelegate {
+class RegionsListViewController: UIViewController, MKMapViewDelegate {
 
+    var locationManager: CLLocationManager!
+    private var logger = Logger()
+    
     @IBOutlet var mapView: MKMapView!
-    var regions: Set<CLRegion>? {
-        didSet {
-           // self.updateMap()
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Monitored Regions"
-        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                                 target: self,
+                                                                 action: #selector(addRegion))
         registerMapAnnotationViews()
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         updateMap()
     }
     
@@ -34,16 +38,58 @@ class RegionsDetailControllerViewController: UIViewController, MKMapViewDelegate
 //        mapView.register(MKAnnotationView.self, forAnnotationViewWithReuseIdentifier: NSStringFromClass(SanFranciscoAnnotation.self))
     }
     
+    @objc func addRegion() {
+        let alertController = UIAlertController(title: "New Region", message: "Please enter a name", preferredStyle: .alert)
+        alertController.addTextField()
+        alertController.addAction(UIAlertAction(title: "Cancel",
+                                                style: .cancel,
+                                                handler: { _ in
+            return
+        }))
+        alertController.addAction(UIAlertAction(title: "OK",
+                                                style: .default,
+                                                handler: { _ in
+            guard let identifier = alertController.textFields?.first?.text else {
+                return
+            }
+            
+            let center = self.mapView.userLocation.coordinate
+            
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { granted, error in
+                
+                if let error = error {
+                    self.logger.log(level: .error, "Error in requestAuthorization: \(error.localizedDescription)")
+                    return
+                }
+                
+                guard CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) else {
+                    return
+                }
+                // Register the region.
+                let region = CLCircularRegion(center: center,
+                                              radius: 10,
+                                              identifier: identifier)
+                region.notifyOnEntry = true
+                region.notifyOnExit = true
+                
+                self.locationManager.startMonitoring(for: region)
+                self.updateMap()
+            }
+        }))
+        
+        self.present(alertController, animated: true)
+    }
+    
     func updateMap() {
         guard mapView != nil else {
             return
         }
         
-        guard let regions = self.regions else {
-            return
-        }
+        let regions = self.locationManager.monitoredRegions
         
         var mapAnnotations = [MKAnnotation]()
+        let existingAnnotations = mapView.annotations
+        mapView.removeAnnotations(existingAnnotations)
         
         for region in regions {
             if let region = region as? CLCircularRegion {
@@ -93,21 +139,25 @@ class RegionsDetailControllerViewController: UIViewController, MKMapViewDelegate
     func mapView(_ mapView: MKMapView,
            annotationView view: MKAnnotationView,
                           calloutAccessoryControlTapped control: UIControl){
-        let alert = UIAlertController(title: "My Alert", message: "This is an alert.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
-            NSLog("The \"OK\" alert occured.")
-        }))
-        self.present(alert, animated: true, completion: nil)
+        self.performSegue(withIdentifier: "RegionDetail", sender: view.annotation)
     }
     
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
+        if let detailView = segue.destination as? RegionViewController {
+            guard let annotation = sender as? MKAnnotation else {
+                let logger = Logger()
+                logger.log(level: .error, "Sender was not MKAnnotation")
+                return
+            }
+            guard let identifier = annotation.title else {
+                return
+            }
+            detailView.identifier = identifier
+            detailView.locationManager = locationManager
+        }
     }
-    */
-
 }

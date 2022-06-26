@@ -35,36 +35,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.locationManager.requestAlwaysAuthorization()
         }
     }
-    
-    @IBAction func setMonitoring (_ sender: UIButton) {
         
-        guard let center = self.currentLocation?.coordinate else {
-            self.appendError("No center coordinate found")
-            return
-        }
-        
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { granted, error in
-            
-            if let error = error {
-                self.appendError(error)
-                return
-            }
-            
-            guard CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) else {
-                self.appendError("Monitoring not available")
-                return
-            }
-            // Register the region.
-            let region = CLCircularRegion(center: center,
-                                          radius: 10,
-                                          identifier: "Test Region")
-            region.notifyOnEntry = true
-            region.notifyOnExit = true
-            
-            self.locationManager.startMonitoring(for: region)
-        }
-    }
-    
     @IBAction func testPushNotification() {
         
         print ("Push Test pressed")
@@ -179,8 +150,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     // Navigation Handling
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let regionsController = segue.destination as? RegionsDetailControllerViewController {
-            regionsController.regions = locationManager.monitoredRegions
+        if let regionsController = segue.destination as? RegionsListViewController {
+            regionsController.locationManager = locationManager
         }
     }
 }
