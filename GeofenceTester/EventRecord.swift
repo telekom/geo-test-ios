@@ -21,10 +21,7 @@ struct EventRecord: Codable {
 extension EventRecord: CustomDebugStringConvertible {
     var debugDescription: String {
         get {
-            let formatter = DateFormatter()
-            formatter.timeStyle = .short
-            formatter.dateStyle = .short
-            return "\(event.rawValue): \(identifier) \(formatter.string(from: date))"
+            return "\(event.rawValue): \(identifier) \(date.formatted(date: .abbreviated, time: .shortened))"
         }
     }
 }
