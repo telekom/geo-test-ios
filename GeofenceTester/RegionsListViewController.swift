@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 import os.log
 
-class RegionsListViewController: UIViewController, MKMapViewDelegate {
+class RegionsListViewController: UIViewController {
 
     var locationManager: CLLocationManager!
     var storage: PersistantStorage<EventRecord>!
@@ -99,26 +99,6 @@ class RegionsListViewController: UIViewController, MKMapViewDelegate {
         mapView.showAnnotations(mapAnnotations, animated: true)
     }
         
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard !annotation.isKind(of: MKUserLocation.self) else {
-            // Make a fast exit if the annotation is the `MKUserLocation`, as it's not an annotation view we wish to customize.
-            return nil
-        }
-        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: defaultReuseIdentifier,
-                                                                   for: annotation)
-        annotationView.canShowCallout = true
-        let rightButton = UIButton(type: .infoLight)
-        annotationView.rightCalloutAccessoryView = rightButton
-        
-        return annotationView
-    }
-    
-    func mapView(_ mapView: MKMapView,
-           annotationView view: MKAnnotationView,
-                          calloutAccessoryControlTapped control: UIControl){
-        self.performSegue(withIdentifier: "RegionDetail", sender: view.annotation)
-    }
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -145,5 +125,28 @@ class RegionsListViewController: UIViewController, MKMapViewDelegate {
     @IBAction func unwindAction(unwindSegue: UIStoryboardSegue) {
         self.updateMap()
     }
+}
+
+extension RegionsListViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !annotation.isKind(of: MKUserLocation.self) else {
+            // Make a fast exit if the annotation is the `MKUserLocation`, as it's not an annotation view we wish to customize.
+            return nil
+        }
+        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: defaultReuseIdentifier,
+                                                                   for: annotation)
+        annotationView.canShowCallout = true
+        let rightButton = UIButton(type: .infoLight)
+        annotationView.rightCalloutAccessoryView = rightButton
+        
+        return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView,
+           annotationView view: MKAnnotationView,
+                          calloutAccessoryControlTapped control: UIControl){
+        self.performSegue(withIdentifier: "RegionDetail", sender: view.annotation)
+    }
+    
 
 }
