@@ -8,76 +8,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Basic settings-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController title="Basic settings" id="BYZ-38-t0r" customClass="ViewController" customModule="GeofenceTester" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Fkj-ap-RaY">
-                                <rect key="frame" x="20" y="475" width="374" height="387"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mcn-jb-Dun">
-                                <rect key="frame" x="127.5" y="108" width="159" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Get Current Location"/>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9qx-GH-il9">
-                                <rect key="frame" x="20" y="147" width="374" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hLi-CB-Mcm">
-                                <rect key="frame" x="163.5" y="228" width="87.5" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Test Push"/>
-                                <connections>
-                                    <action selector="testPushNotification" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fhs-lq-T5j"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmy-JI-HeE">
-                                <rect key="frame" x="149.5" y="189" width="115" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Show Regions"/>
-                                <connections>
-                                    <segue destination="Mm7-Ts-hYc" kind="show" id="tMQ-V7-XaU"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Fkj-ap-RaY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="1eB-K7-Cp7"/>
-                            <constraint firstItem="Mcn-jb-Dun" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="3oz-k4-FJs"/>
-                            <constraint firstItem="hLi-CB-Mcm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8qv-Xl-EFo"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9qx-GH-il9" secondAttribute="trailing" constant="20" id="BcV-ug-2mw"/>
-                            <constraint firstItem="Mcn-jb-Dun" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Frx-Wm-X5p"/>
-                            <constraint firstItem="hLi-CB-Mcm" firstAttribute="top" secondItem="Jmy-JI-HeE" secondAttribute="bottom" constant="8" symbolic="YES" id="Gkg-05-Fmx"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Fkj-ap-RaY" secondAttribute="trailing" constant="20" id="OuE-JS-mHL"/>
-                            <constraint firstItem="9qx-GH-il9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="RIU-gC-4Ik"/>
-                            <constraint firstItem="9qx-GH-il9" firstAttribute="top" secondItem="Mcn-jb-Dun" secondAttribute="bottom" constant="8" symbolic="YES" id="SJ5-Wh-iyI"/>
-                            <constraint firstItem="Fkj-ap-RaY" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="cvg-S5-8cQ"/>
-                            <constraint firstItem="Jmy-JI-HeE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ib3-BK-B9B"/>
-                            <constraint firstItem="Jmy-JI-HeE" firstAttribute="top" secondItem="9qx-GH-il9" secondAttribute="bottom" constant="8" symbolic="YES" id="nxY-Um-dBF"/>
-                            <constraint firstItem="Fkj-ap-RaY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="yO8-Ig-7XB"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="4Tb-3P-oPN"/>
-                    <connections>
-                        <outlet property="errorView" destination="Fkj-ap-RaY" id="5Se-tA-Q3u"/>
-                        <outlet property="locationField" destination="9qx-GH-il9" id="wNQ-KS-MJB"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-72" y="80"/>
-        </scene>
         <!--Region View Controller-->
         <scene sceneID="YKZ-k1-aQM">
             <objects>
@@ -121,7 +51,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="USa-UM-Vqe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="cbS-Gs-Y1z" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-72.463768115942031" y="877.90178571428567"/>
+            <point key="canvasLocation" x="729" y="80"/>
         </scene>
         <!--Regions List View Controller-->
         <scene sceneID="Muk-EI-eLV">
@@ -132,7 +62,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PTq-kR-Xju">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <connections>
                                     <outlet property="delegate" destination="Mm7-Ts-hYc" id="XWT-AW-D1g"/>
                                 </connections>
@@ -142,24 +72,22 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="PTq-kR-Xju" firstAttribute="bottom" secondItem="Lrv-Dt-3tV" secondAttribute="bottom" id="DpO-kA-8Eb"/>
-                            <constraint firstItem="PTq-kR-Xju" firstAttribute="top" secondItem="Lrv-Dt-3tV" secondAttribute="top" constant="88" id="Zl5-yo-yjU"/>
                             <constraint firstAttribute="trailing" secondItem="PTq-kR-Xju" secondAttribute="trailing" id="cVJ-tE-JWC"/>
-                            <constraint firstItem="PTq-kR-Xju" firstAttribute="leading" secondItem="Cgu-SU-7L9" secondAttribute="leading" id="ljU-vx-Efw"/>
+                            <constraint firstItem="PTq-kR-Xju" firstAttribute="leading" secondItem="Lrv-Dt-3tV" secondAttribute="leading" id="ljU-vx-Efw"/>
+                            <constraint firstItem="PTq-kR-Xju" firstAttribute="top" secondItem="Lrv-Dt-3tV" secondAttribute="top" id="pb3-RV-fzC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1LR-FO-FdF">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="organize" id="O8y-4g-daL">
-                                <connections>
-                                    <segue destination="qM3-Fa-wHS" kind="show" id="wyd-fL-lg7"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="add" id="BJ6-F4-XfY">
-                                <connections>
-                                    <action selector="addRegion" destination="Mm7-Ts-hYc" id="1H1-ve-oEg"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="BJ6-F4-XfY">
+                            <connections>
+                                <action selector="addRegionAction" destination="Mm7-Ts-hYc" id="1H1-ve-oEg"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="organize" id="O8y-4g-daL">
+                            <connections>
+                                <segue destination="qM3-Fa-wHS" kind="show" id="wyd-fL-lg7"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="PTq-kR-Xju" id="Xpb-Pa-2kJ"/>
@@ -168,7 +96,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8T9-hw-ljf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-997" y="878"/>
+            <point key="canvasLocation" x="-142.63392857142856" y="78.260869565217391"/>
         </scene>
         <!--Events Table View Controller-->
         <scene sceneID="OR8-K7-icH">
@@ -179,7 +107,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Lrp-57-Lec">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StoryboardCell" id="Lrp-57-Lec">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lrp-57-Lec" id="oAi-8m-7Ve">
@@ -203,7 +131,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mgR-Lf-2xM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-992" y="1597"/>
+            <point key="canvasLocation" x="-142" y="815"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="E3L-WX-VYA">
@@ -214,7 +142,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="uxl-Ac-QIa"/>
+                        <segue destination="Mm7-Ts-hYc" kind="relationship" relationship="rootViewController" id="igo-k7-L7x"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G53-sD-vUK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -223,9 +151,6 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
