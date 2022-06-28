@@ -7,11 +7,16 @@
 
 import Foundation
 
+protocol Storage {
+    associatedtype Object: Codable
+    var objects: Array<Object> { get }
+    func store(_ object: Object) throws
+}
 
+class PersistantStorage<T: Codable>: Storage {
+    typealias Object = T
 
-class PersistantStorage<T: Codable> {
-    
-    public private(set) var storage = Array<T>()
+    public private(set) var objects = Array<T>()
     private let decoder = JSONDecoder()
     private let encoder = JSONEncoder()
     private let kFilename = "geolocator.log"
@@ -21,7 +26,7 @@ class PersistantStorage<T: Codable> {
             let url = try fileURL()
             let jsonData = try Data(contentsOf: url)
             // Well, it really should throw, but …
-            storage = try decoder.decode([T].self, from: jsonData)
+            objects = try decoder.decode([T].self, from: jsonData)
         }
         catch {
             // File does not exist
@@ -30,14 +35,10 @@ class PersistantStorage<T: Codable> {
     }
     
     func store(_ object: T) throws {
-        storage.append(object)
+        objects.append(object)
         try save()
     }
      
-    func retrieveAll() -> [T] {
-        return storage
-    }
-    
     private func fileURL() throws -> URL {
         let fm = FileManager.default
         var path: URL!
@@ -55,7 +56,7 @@ class PersistantStorage<T: Codable> {
     }
     
     private func save() throws {
-        let json = try encoder.encode(storage)
+        let json = try encoder.encode(objects)
         try json.write(to: fileURL())
     }
 }

@@ -10,7 +10,6 @@
 		CB268BA0285A19DC00B16C3A /* PersistantStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB268B9F285A19DC00B16C3A /* PersistantStorage.swift */; };
 		CB655F6628534E2600EBCABA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB655F6528534E2600EBCABA /* AppDelegate.swift */; };
 		CB655F6828534E2600EBCABA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB655F6728534E2600EBCABA /* SceneDelegate.swift */; };
-		CB655F6A28534E2600EBCABA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB655F6928534E2600EBCABA /* ViewController.swift */; };
 		CB655F6D28534E2600EBCABA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB655F6B28534E2600EBCABA /* Main.storyboard */; };
 		CB655F6F28534E2700EBCABA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB655F6E28534E2700EBCABA /* Assets.xcassets */; };
 		CB655F7228534E2700EBCABA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB655F7028534E2700EBCABA /* LaunchScreen.storyboard */; };
@@ -25,7 +24,6 @@
 		CB655F6228534E2600EBCABA /* GeofenceTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeofenceTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB655F6528534E2600EBCABA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB655F6728534E2600EBCABA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CB655F6928534E2600EBCABA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CB655F6C28534E2600EBCABA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CB655F6E28534E2700EBCABA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB655F7128534E2700EBCABA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -68,7 +66,6 @@
 			children = (
 				CB655F6528534E2600EBCABA /* AppDelegate.swift */,
 				CB655F6728534E2600EBCABA /* SceneDelegate.swift */,
-				CB655F6928534E2600EBCABA /* ViewController.swift */,
 				CB655F7D2856A43B00EBCABA /* RegionsListViewController.swift */,
 				CBE711EE2868EE36008F51C4 /* RegionViewController.swift */,
 				CBE711F2286920FD008F51C4 /* EventsTableViewController.swift */,
@@ -153,7 +150,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB655F6A28534E2600EBCABA /* ViewController.swift in Sources */,
 				CBE711F1286915A8008F51C4 /* EventRecord.swift in Sources */,
 				CB655F6628534E2600EBCABA /* AppDelegate.swift in Sources */,
 				CBE711EF2868EE36008F51C4 /* RegionViewController.swift in Sources */,
@@ -324,7 +320,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -352,7 +348,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

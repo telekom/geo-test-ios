@@ -24,7 +24,7 @@ class EventsTableViewController: UITableViewController {
     }
 
     @IBAction func share() {
-        let text = storage.storage.reduce("") { partialResult, event in
+        let text = storage.objects.reduce("") { partialResult, event in
             partialResult + event.debugDescription + "\n"
         }
         let activityController = UIActivityViewController(activityItems: [text], applicationActivities: nil)
@@ -38,14 +38,14 @@ class EventsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return storage.storage.count
+        return storage.objects.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Event Cell", for: indexPath)
 
         var config = cell.defaultContentConfiguration()
-        let event = storage.storage[indexPath.row]
+        let event = storage.objects[indexPath.row]
         config.text = event.debugDescription
         cell.contentConfiguration = config
         return cell
