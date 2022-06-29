@@ -63,24 +63,14 @@ class RegionsListViewController: UIViewController {
             
             let center = self.mapView.userLocation.coordinate
             
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { granted, error in
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { [self] granted, error in
                 
                 if let error = error {
-                    self.logger.log(level: .error, "Error in requestAuthorization: \(error.localizedDescription)")
+                    self.handleError("Error in requestAuthorization: \(error.localizedDescription)")
                     return
                 }
                 
-                guard CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) else {
-                    return
-                }
-                // Register the region.
-                let region = CLCircularRegion(center: center,
-                                              radius: 10,
-                                              identifier: identifier)
-                region.notifyOnEntry = true
-                region.notifyOnExit = true
-                
-                self.locationManager.startMonitoring(for: region)
+                self.registerRegion(identifier: identifier, center: center)
                 DispatchQueue.main.async {
                     self.updateMap()
                 }
@@ -90,7 +80,22 @@ class RegionsListViewController: UIViewController {
         self.present(alertController, animated: true)
     }
     
-    func updateMap() {
+    private func registerRegion(identifier: String, center: CLLocationCoordinate2D) {
+        guard CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) else {
+            self.handleError("Circular Region Monitoring not available")
+            return
+        }
+        // Register the region.
+        let region = CLCircularRegion(center: center,
+                                      radius: 10,
+                                      identifier: identifier)
+        region.notifyOnEntry = true
+        region.notifyOnExit = true
+        
+        self.locationManager.startMonitoring(for: region)
+    }
+    
+    private func updateMap() {
         guard mapView != nil else {
             return
         }
@@ -116,12 +121,12 @@ class RegionsListViewController: UIViewController {
         mapView.showAnnotations(mapAnnotations, animated: true)
     }
        
-    func handleError (_ error: Error) {
+    private func handleError (_ error: Error) {
         handleError(error.localizedDescription)
     }
     
-    func handleError (_ error: String) {
-        print (error)
+    private func handleError (_ error: String) {
+        logger.error("\(error)")
     }
     
     // MARK: - Navigation
@@ -180,7 +185,6 @@ extension RegionsListViewController: MKMapViewDelegate {
                           calloutAccessoryControlTapped control: UIControl){
         self.performSegue(withIdentifier: "RegionDetail", sender: view.annotation)
     }
-    
 }
 
 // MARK: - CLLocationManagerDelegate
