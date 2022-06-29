@@ -17,6 +17,10 @@
 		CBE711EF2868EE36008F51C4 /* RegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE711EE2868EE36008F51C4 /* RegionViewController.swift */; };
 		CBE711F1286915A8008F51C4 /* EventRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE711F0286915A8008F51C4 /* EventRecord.swift */; };
 		CBE711F3286920FD008F51C4 /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE711F2286920FD008F51C4 /* EventsTableViewController.swift */; };
+		CBE71231286C7E00008F51C4 /* AppCenterAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CBE71230286C7E00008F51C4 /* AppCenterAnalytics */; };
+		CBE71233286C7E00008F51C4 /* AppCenterCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = CBE71232286C7E00008F51C4 /* AppCenterCrashes */; };
+		CBE71235286C7E00008F51C4 /* AppCenterDistribute in Frameworks */ = {isa = PBXBuildFile; productRef = CBE71234286C7E00008F51C4 /* AppCenterDistribute */; };
+		CBE71237286C7E7A008F51C4 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE71236286C7E7A008F51C4 /* Keys.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,7 @@
 		CBE711EE2868EE36008F51C4 /* RegionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionViewController.swift; sourceTree = "<group>"; };
 		CBE711F0286915A8008F51C4 /* EventRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRecord.swift; sourceTree = "<group>"; };
 		CBE711F2286920FD008F51C4 /* EventsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
+		CBE71236286C7E7A008F51C4 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +44,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBE71231286C7E00008F51C4 /* AppCenterAnalytics in Frameworks */,
+				CBE71233286C7E00008F51C4 /* AppCenterCrashes in Frameworks */,
+				CBE71235286C7E00008F51C4 /* AppCenterDistribute in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				CB655F6528534E2600EBCABA /* AppDelegate.swift */,
+				CBE71236286C7E7A008F51C4 /* Keys.swift */,
 				CB655F6728534E2600EBCABA /* SceneDelegate.swift */,
 				CB655F7D2856A43B00EBCABA /* RegionsListViewController.swift */,
 				CBE711EE2868EE36008F51C4 /* RegionViewController.swift */,
@@ -95,6 +104,11 @@
 			dependencies = (
 			);
 			name = GeofenceTester;
+			packageProductDependencies = (
+				CBE71230286C7E00008F51C4 /* AppCenterAnalytics */,
+				CBE71232286C7E00008F51C4 /* AppCenterCrashes */,
+				CBE71234286C7E00008F51C4 /* AppCenterDistribute */,
+			);
 			productName = GeofenceTester;
 			productReference = CB655F6228534E2600EBCABA /* GeofenceTester.app */;
 			productType = "com.apple.product-type.application";
@@ -123,6 +137,9 @@
 				Base,
 			);
 			mainGroup = CB655F5928534E2600EBCABA;
+			packageReferences = (
+				CBE7122F286C7E00008F51C4 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */,
+			);
 			productRefGroup = CB655F6328534E2600EBCABA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -151,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBE711F1286915A8008F51C4 /* EventRecord.swift in Sources */,
+				CBE71237286C7E7A008F51C4 /* Keys.swift in Sources */,
 				CB655F6628534E2600EBCABA /* AppDelegate.swift in Sources */,
 				CBE711EF2868EE36008F51C4 /* RegionViewController.swift in Sources */,
 				CB655F6828534E2600EBCABA /* SceneDelegate.swift in Sources */,
@@ -380,6 +398,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CBE7122F286C7E00008F51C4 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/microsoft/appcenter-sdk-apple.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CBE71230286C7E00008F51C4 /* AppCenterAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBE7122F286C7E00008F51C4 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */;
+			productName = AppCenterAnalytics;
+		};
+		CBE71232286C7E00008F51C4 /* AppCenterCrashes */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBE7122F286C7E00008F51C4 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */;
+			productName = AppCenterCrashes;
+		};
+		CBE71234286C7E00008F51C4 /* AppCenterDistribute */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBE7122F286C7E00008F51C4 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */;
+			productName = AppCenterDistribute;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CB655F5A28534E2600EBCABA /* Project object */;
 }
