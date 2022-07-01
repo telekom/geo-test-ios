@@ -90,6 +90,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addButton" destination="BJ6-F4-XfY" id="UTb-4K-1NO"/>
                         <outlet property="mapView" destination="PTq-kR-Xju" id="Xpb-Pa-2kJ"/>
                         <segue destination="abz-U4-dF9" kind="showDetail" identifier="RegionDetail" id="r59-b2-f5b"/>
                     </connections>

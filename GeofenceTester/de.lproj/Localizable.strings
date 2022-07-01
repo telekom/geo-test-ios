@@ -1,0 +1,27 @@
+/* Accessibilty label for add button */
+"Add Monitored Region at current location" = "Füge eine überwachte Region am aktuellen Ort hinzu";
+
+/* New Region Alert */
+"Cancel" = "Abbrechen";
+
+/* New Region Alert */
+"New Region" = "Neue Region";
+
+/* Alert: Authorization to Localization denied */
+"No authorization" = "Keine Authorization";
+
+/* New Region Alert */
+"OK" = "OK";
+
+/* New Region Alert */
+"Please enter a name" = "Name für die Region";
+
+/* Push Notificaton Title */
+"Region Entered" = "Region betreten";
+
+/* Push Notificaton Title */
+"Region Exited" = "Region verlassen";
+
+/* Alert: Authorization to Localization denied */
+"This app requires the location services to be authorised" = "Die Ortungsdienste müssen für diese App zugelassen sein";
+
