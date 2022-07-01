@@ -1,0 +1,3 @@
+/* Privacy - Location When In Use Usage Description */
+"NSLocationWhenInUseUsageDescription" = "This is a region monitoring testing app. It needs background location updates";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "This is a region monitoring testing app. It needs background location updates";

@@ -16,10 +16,12 @@ class RegionsListViewController: UIViewController {
     private var logger = Logger()
     
     @IBOutlet var mapView: MKMapView!
+    @IBOutlet var addButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
                 
+        addButton.accessibilityLabel = NSLocalizedString("Add Monitored Region at current location", comment: "Accessibilty label for add button")
         locationManager.delegate = self
         
         registerMapAnnotationViews()
@@ -31,7 +33,11 @@ class RegionsListViewController: UIViewController {
             self.mapView.showsUserLocation = true
             mapView.setCenter(mapView.userLocation.coordinate, animated: true)
         default:
-            let alert = UIAlertController(title: "No authorization", message: "This app requires the location services to be authorised", preferredStyle: .alert)
+            let alert = UIAlertController(title: NSLocalizedString("No authorization",
+                                                                   comment: "Alert: Authorization to Localization denied"),
+                                          message: NSLocalizedString("This app requires the location services to be authorised",
+                                                                     comment: "Alert: Authorization to Localization denied"),
+                                          preferredStyle: .alert)
             self.present(alert, animated: true)
         }
     }
@@ -47,14 +53,20 @@ class RegionsListViewController: UIViewController {
     }
         
     @IBAction func addRegionAction() {
-        let alertController = UIAlertController(title: "New Region", message: "Please enter a name", preferredStyle: .alert)
+        let alertController = UIAlertController(title: NSLocalizedString("New Region",
+                                                                         comment: "New Region Alert"),
+                                                message: NSLocalizedString("Please enter a name",
+                                                                           comment: "New Region Alert"),
+                                                preferredStyle: .alert)
         alertController.addTextField()
-        alertController.addAction(UIAlertAction(title: "Cancel",
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel",
+                                                                         comment: "New Region Alert"),
                                                 style: .cancel,
                                                 handler: { _ in
             return
         }))
-        alertController.addAction(UIAlertAction(title: "OK",
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("OK",
+                                                                         comment: "New Region Alert"),
                                                 style: .default,
                                                 handler: { _ in
             guard let identifier = alertController.textFields?.first?.text else {
@@ -121,11 +133,11 @@ class RegionsListViewController: UIViewController {
         mapView.showAnnotations(mapAnnotations, animated: true)
     }
        
-    private func handleError (_ error: Error) {
+    internal func handleError (_ error: Error) {
         handleError(error.localizedDescription)
     }
     
-    private func handleError (_ error: String) {
+    internal func handleError (_ error: String) {
         logger.error("\(error)")
     }
     
@@ -136,8 +148,7 @@ class RegionsListViewController: UIViewController {
         
         if let destination = segue.destination as? RegionViewController {
             guard let annotation = sender as? MKAnnotation else {
-                let logger = Logger()
-                logger.log(level: .error, "Sender was not MKAnnotation")
+                self.handleError("Sender was not MKAnnotation")
                 return
             }
             guard let identifier = annotation.title else {
@@ -184,79 +195,5 @@ extension RegionsListViewController: MKMapViewDelegate {
            annotationView view: MKAnnotationView,
                           calloutAccessoryControlTapped control: UIControl){
         self.performSegue(withIdentifier: "RegionDetail", sender: view.annotation)
-    }
-}
-
-// MARK: - CLLocationManagerDelegate
-
-extension RegionsListViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        let date = Date()
-        let content = UNMutableNotificationContent()
-        content.title = "Region Entered"
-        content.body = "\(region.identifier) \(date)"
-        
-        let eventRecord = EventRecord(event: .ENTER,
-                                      identifier: region.identifier,
-                                      date: date)
-        do {
-            try storage.store(eventRecord)
-        }
-        catch let error {
-            self.handleError(error)
-        }
-        let request = UNNotificationRequest(identifier: region.identifier,
-                                            content: content,
-                                            trigger: nil)
-        UNUserNotificationCenter.current().add(request)
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        let content = UNMutableNotificationContent()
-        content.title = "Region Exited"
-        content.body = "\(region.identifier) \(Date())"
-        
-        let eventRecord = EventRecord(event: .EXIT,
-                                      identifier: region.identifier,
-                                      date: Date())
-        do {
-            try storage.store(eventRecord)
-        }
-        catch let error {
-            self.handleError(error)
-        }
-        let request = UNNotificationRequest(identifier: region.identifier,
-                                            content: content,
-                                            trigger: nil)
-        UNUserNotificationCenter.current().add(request)
-    }
-    
-    func locationManager( _ manager: CLLocationManager,
-                          monitoringDidFailFor region: CLRegion?,
-                          withError error: Error
-    ) {
-        self.handleError(error)
-    }
-    
-    func locationManager(_ manager: CLLocationManager,
-                         didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .restricted, .denied:
-            // Disable your app's location features
-            self.handleError("Warning: Location restricted or denied")
-            
-        case .authorizedWhenInUse:
-            // Enable your app's location features.
-            self.handleError("Warning: Location InUse Only")
-            
-        case .authorizedAlways:
-            self.mapView.showsUserLocation = true
-            // Enable or prepare your app's location features that can run any time.
-            
-        case .notDetermined:
-            self.handleError("Warning: Location Not Determined")
-        default:
-            self.handleError("Warning: Switch fell through")
-        }
     }
 }
