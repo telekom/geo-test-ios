@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21179.7" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="spF-mv-FWq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="spF-mv-FWq">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21169.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRa-cH-jsG">
-                                <rect key="frame" x="170.5" y="446.5" width="73.5" height="34.5"/>
+                                <rect key="frame" x="174" y="476.5" width="66" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Delete">
                                     <color key="baseBackgroundColor" systemColor="systemRedColor"/>
@@ -28,7 +27,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cE5-Vd-Ysh">
-                                <rect key="frame" x="165.5" y="403.5" width="83" height="35"/>
+                                <rect key="frame" x="170" y="405.5" width="74" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Change"/>
                                 <connections>
@@ -36,31 +35,31 @@
                                 </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="1" maxValue="400" translatesAutoresizingMaskIntoConstraints="NO" id="1sb-Jx-9tg">
-                                <rect key="frame" x="18" y="365.5" width="378" height="31"/>
+                                <rect key="frame" x="18" y="367.5" width="378" height="31"/>
                                 <connections>
                                     <action selector="sliderValueChangedWithSender:" destination="abz-U4-dF9" eventType="valueChanged" id="Zec-Gl-5HR"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Indentifier:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SpT-kf-hY1">
-                                <rect key="frame" x="20" y="300.5" width="82" height="21"/>
+                                <rect key="frame" x="20" y="302.5" width="82" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Radius:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jnz-UA-YoM">
-                                <rect key="frame" x="20" y="336.5" width="56" height="21"/>
+                                <rect key="frame" x="20" y="338.5" width="56" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="400m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1nR-oe-ovR">
-                                <rect key="frame" x="84" y="336.5" width="310" height="21"/>
+                                <rect key="frame" x="84" y="338.5" width="310" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dCt-7d-uqJ">
-                                <rect key="frame" x="110" y="294.5" width="284" height="34"/>
+                                <rect key="frame" x="110" y="296.5" width="284" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -75,7 +74,7 @@
                             <constraint firstItem="1nR-oe-ovR" firstAttribute="top" secondItem="dCt-7d-uqJ" secondAttribute="bottom" constant="8" symbolic="YES" id="I1K-fe-gI0"/>
                             <constraint firstItem="Vg1-62-cZ1" firstAttribute="trailing" secondItem="dCt-7d-uqJ" secondAttribute="trailing" constant="20" id="LFg-GY-7GZ"/>
                             <constraint firstItem="cE5-Vd-Ysh" firstAttribute="centerX" secondItem="Xr6-ey-GEK" secondAttribute="centerX" id="cEl-Zl-zWg"/>
-                            <constraint firstItem="pRa-cH-jsG" firstAttribute="top" secondItem="cE5-Vd-Ysh" secondAttribute="bottom" constant="8" symbolic="YES" id="d1V-kq-P3M"/>
+                            <constraint firstItem="pRa-cH-jsG" firstAttribute="top" secondItem="cE5-Vd-Ysh" secondAttribute="bottom" constant="40" id="d1V-kq-P3M"/>
                             <constraint firstItem="pRa-cH-jsG" firstAttribute="centerX" secondItem="Xr6-ey-GEK" secondAttribute="centerX" id="dja-ue-nUP"/>
                             <constraint firstItem="SpT-kf-hY1" firstAttribute="leading" secondItem="Vg1-62-cZ1" secondAttribute="leading" constant="20" id="hfE-cb-4hm"/>
                             <constraint firstItem="1nR-oe-ovR" firstAttribute="leading" secondItem="Jnz-UA-YoM" secondAttribute="trailing" constant="8" symbolic="YES" id="i1b-zU-E0Q"/>
@@ -121,7 +120,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pausing updates doesn’t diminish the quality of updates, but can improve battery life significantly." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9CP-Ze-oHL">
-                                <rect key="frame" x="20" y="122" width="374" height="38"/>
+                                <rect key="frame" x="20" y="122" width="374" height="30.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -218,7 +217,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StoryboardCell" id="Lrp-57-Lec">
-                                <rect key="frame" x="0.0" y="50" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lrp-57-Lec" id="oAi-8m-7Ve">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -261,7 +260,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gear" catalog="system" width="128" height="122"/>
+        <image name="gear" catalog="system" width="128" height="119"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

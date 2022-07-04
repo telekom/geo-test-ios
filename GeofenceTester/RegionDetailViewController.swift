@@ -78,9 +78,22 @@ class RegionDetailViewController: UIViewController, Loggable, LocationUser {
         for region in locationManager.monitoredRegions.filter({ region in
             region.identifier == identifier
         }) {
-            locationManager.stopMonitoring(for: region)
+            let messageFormat = NSLocalizedString("Do you really want to delete the region '%@'?",
+                                                  comment: "Alert Body")
+            let alert = UIAlertController(title: NSLocalizedString("Delete Region?", comment: "Alert Title"),
+                                          message: String(format: messageFormat, identifier),
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""),
+                                          style: .cancel))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Delete", comment: "Alert Button"),
+                                          style: .destructive,
+                                          handler: { _ in
+                self.locationManager.stopMonitoring(for: region)
+            }))
+            self.present(alert, animated: true) {
+                self.performSegue(withIdentifier: "unwindSegue", sender: self)
+            }
         }
-        self.performSegue(withIdentifier: "unwindSegue", sender: self)
     }
     
     /*

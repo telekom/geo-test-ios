@@ -1,3 +1,6 @@
+/* Class = "UILabel"; text = "Pausing updates doesn’t diminish the quality of updates, but can improve battery life significantly."; ObjectID = "9CP-Ze-oHL"; */
+"9CP-Ze-oHL.text" = "Das Pausieren der Updates verringert nicht die Qualität der Updates, kann aber den Energieverbrauch signifikant senken";
+
 /* Class = "UIButton"; configuration.title = "Change"; ObjectID = "cE5-Vd-Ysh"; */
 "cE5-Vd-Ysh.configuration.title" = "Ändern";
 
