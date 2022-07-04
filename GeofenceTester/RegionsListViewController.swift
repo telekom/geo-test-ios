@@ -8,6 +8,7 @@
 import UIKit
 import MapKit
 import os.log
+import AppCenterAnalytics
 
 let PausesVisitAutomatically = "PausesVisitAutomatically"
 
@@ -155,6 +156,7 @@ class RegionsListViewController: UIViewController {
     }
     
     internal func handleError (_ error: String) {
+        Analytics.trackEvent(error, withProperties: [:], flags: .critical)
         logger.error("\(error)")
     }
     

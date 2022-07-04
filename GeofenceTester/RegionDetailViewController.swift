@@ -8,6 +8,7 @@
 import UIKit
 import CoreLocation
 import os.log
+import AppCenterAnalytics
 
 class RegionDetailViewController: UIViewController, Loggable, LocationUser {
 
@@ -60,7 +61,9 @@ class RegionDetailViewController: UIViewController, Loggable, LocationUser {
             guard let region = locationManager.monitoredRegions.first(where: {
                 $0.identifier == identifier
             }) as? CLCircularRegion else {
-                logger.error("Unable to find monitored region with identifier \(self.identifier)")
+                let error = "Unable to find monitored region with identifier \(self.identifier!)"
+                logger.error("\(error)")
+                Analytics.trackEvent(error, withProperties: [:], flags: .critical)
                 return
             }
             
