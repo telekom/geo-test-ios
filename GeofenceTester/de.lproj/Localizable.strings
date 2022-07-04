@@ -4,6 +4,12 @@
 /* New Region Alert */
 "Cancel" = "Abbrechen";
 
+/* Visit with Coordinate Info */
+"Coordinate %.4f, %.4f" = "Koordinate %1$.4f, %2$.4f";
+
+/* Found visit in region info */
+"Found: %@" = "Identifiziert als: %@";
+
 /* New Region Alert */
 "New Region" = "Neue Region";
 
@@ -22,6 +28,12 @@
 /* Push Notificaton Title */
 "Region Exited" = "Region verlassen";
 
+/* Accessibilty label for settings button */
+"Settings" = "Einstellungen";
+
 /* Alert: Authorization to Localization denied */
 "This app requires the location services to be authorised" = "Die Ortungsdienste müssen für diese App zugelassen sein";
+
+/* Push Notificaton Title */
+"Visit" = "Visit";
 

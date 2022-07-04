@@ -1,4 +1,9 @@
+/* Bundle name */
+"CFBundleName" = "Geofence​Tester";
+
 /* Privacy - Location Always and When In Use Usage Description */
-"NSLocationWhenInUseUsageDescription" = "Der Zweck dieser App ist Region Monitoring. Dazu benötigt sie Ortungsdienste im Hintergrund";
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "Der Zweck dieser App ist Region Monitoring. Dazu benötigt sie Ortungsdienste im Hintergrund";
+
+/* Privacy - Location When In Use Usage Description */
+"NSLocationWhenInUseUsageDescription" = "Der Zweck dieser App ist Region Monitoring. Dazu benötigt sie Ortungsdienste im Hintergrund";
 

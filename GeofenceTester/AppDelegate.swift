@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             Analytics.self,
                             Crashes.self
                         ])
+        UserDefaults.standard.register(defaults: [PausesVisitAutomatically: true])
+
         return true
     }
 

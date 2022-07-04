@@ -10,14 +10,38 @@ import CoreLocation
 
 extension RegionsListViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        process(event: .ENTER, region: region)
+        process(event: .ENTER, info: region.identifier)
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        process(event: .EXIT, region: region)
+        process(event: .EXIT, info: region.identifier)
     }
     
-    private func process (event: EventRecord.EventType, region: CLRegion) {
+    func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
+        let visitLocation = CLLocation(latitude: visit.coordinate.latitude,
+                                       longitude: visit.coordinate.longitude)
+        let info: String
+        if let matchingRegion = locationManager.monitoredRegions.first(where:{ region in
+            guard let region = region as? CLCircularRegion else {
+                return false
+            }
+            let regionLocation = CLLocation(latitude: region.center.latitude,
+                                            longitude: region.center.longitude)
+            let distance = visitLocation.distance(from: regionLocation)
+            return abs(distance) <= region.radius
+        }) {
+            let infoFormat = NSLocalizedString("Found: %@", comment: "Found visit in region info")
+            info = String(format: infoFormat, matchingRegion.identifier)
+        } else {
+            let infoFormat = NSLocalizedString("Coordinate %.4f, %.4f",
+                                               comment: "Visit with Coordinate Info")
+            info = String(format: infoFormat, visit.coordinate.latitude, visit.coordinate.longitude)
+        }
+        process(event: .VISIT, info: info)
+    }
+    
+    private func process (event: EventRecord.EventType,
+                          info: String) {
         let content = UNMutableNotificationContent()
         let title: String
         switch event {
@@ -27,20 +51,24 @@ extension RegionsListViewController: CLLocationManagerDelegate {
         case .EXIT:
             title = NSLocalizedString("Region Exited",
                                       comment: "Push Notificaton Title")
+        case .VISIT:
+            title = NSLocalizedString("Visit",
+                                      comment: "Push Notificaton Title")
         }
         content.title = title
-        content.body = "\(region.identifier) \(Date())"
         
         let eventRecord = EventRecord(event: event,
-                                      identifier: region.identifier,
+                                      identifier: info,
                                       date: Date())
+        content.body = eventRecord.debugDescription
+
         do {
             try storage.store(eventRecord)
         }
         catch let error {
             self.handleError(error)
         }
-        let request = UNNotificationRequest(identifier: region.identifier,
+        let request = UNNotificationRequest(identifier: UUID().uuidString,
                                             content: content,
                                             trigger: nil)
         UNUserNotificationCenter.current().add(request)
@@ -65,8 +93,7 @@ extension RegionsListViewController: CLLocationManagerDelegate {
             self.handleError("Warning: Location InUse Only")
             
         case .authorizedAlways:
-            self.mapView.showsUserLocation = true
-            // Enable or prepare your app's location features that can run any time.
+            self.startLocationServices()
             
         case .notDetermined:
             self.handleError("Warning: Location Not Determined")
