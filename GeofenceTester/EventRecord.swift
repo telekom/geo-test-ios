@@ -12,6 +12,7 @@ struct EventRecord: Codable {
     enum EventType: String, Codable {
         case ENTER
         case EXIT
+        case VISIT
     }
     var event: EventType
     var identifier: String

@@ -9,6 +9,8 @@ import UIKit
 import MapKit
 import os.log
 
+let PausesVisitAutomatically = "PausesVisitAutomatically"
+
 class RegionsListViewController: UIViewController {
 
     var locationManager: CLLocationManager = CLLocationManager()
@@ -17,11 +19,14 @@ class RegionsListViewController: UIViewController {
     
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var addButton: UIBarButtonItem!
+    @IBOutlet var settingsButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
                 
         addButton.accessibilityLabel = NSLocalizedString("Add Monitored Region at current location", comment: "Accessibilty label for add button")
+        addButton.accessibilityLabel = NSLocalizedString("Settings", comment: "Accessibilty label for settings button")
+
         locationManager.delegate = self
         
         registerMapAnnotationViews()
@@ -30,8 +35,8 @@ class RegionsListViewController: UIViewController {
         case .notDetermined:
             self.locationManager.requestAlwaysAuthorization()
         case .authorizedAlways:
-            self.mapView.showsUserLocation = true
-            mapView.setCenter(mapView.userLocation.coordinate, animated: true)
+            self.startLocationServices()
+            
         default:
             let alert = UIAlertController(title: NSLocalizedString("No authorization",
                                                                    comment: "Alert: Authorization to Localization denied"),
@@ -40,6 +45,15 @@ class RegionsListViewController: UIViewController {
                                           preferredStyle: .alert)
             self.present(alert, animated: true)
         }
+    }
+    
+    internal func startLocationServices() {
+        self.mapView.showsUserLocation = true
+        mapView.setCenter(mapView.userLocation.coordinate, animated: true)
+        locationManager.startMonitoringVisits()
+        
+        let pauses = UserDefaults.standard.bool(forKey: PausesVisitAutomatically)
+        locationManager.pausesLocationUpdatesAutomatically = pauses
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -99,7 +113,7 @@ class RegionsListViewController: UIViewController {
         }
         // Register the region.
         let region = CLCircularRegion(center: center,
-                                      radius: 10,
+                                      radius: 100,
                                       identifier: identifier)
         region.notifyOnEntry = true
         region.notifyOnExit = true
@@ -121,7 +135,10 @@ class RegionsListViewController: UIViewController {
         
         for region in regions {
             if let region = region as? CLCircularRegion {
-                let overlay = MKCircle(center: region.center, radius: region.radius)
+                let overlay = MKCircle(center: region.center,
+                                       radius: region.radius)
+                // We set this to false, otherwise the identifier will be read twice
+                overlay.isAccessibilityElement = false
                 mapView.addOverlay(overlay)
                 let annotation = MKPointAnnotation()
                 annotation.title = region.identifier
@@ -146,16 +163,28 @@ class RegionsListViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let destination = segue.destination as? RegionViewController {
+        if var destination = segue.destination as? LocationUser {
+            destination.locationManager = self.locationManager
+        }
+        
+        if var destination = segue.destination as? Loggable {
+            destination.logger = logger
+        }
+
+        if let destination = segue.destination as? RegionDetailViewController {
             guard let annotation = sender as? MKAnnotation else {
                 self.handleError("Sender was not MKAnnotation")
                 return
             }
-            guard let identifier = annotation.title else {
+            guard let identifier = annotation.title,
+                    let region = locationManager.monitoredRegions.first(where: {
+                $0.identifier == identifier
+            }) as? CLCircularRegion else {
                 return
             }
-            destination.identifier = identifier
-            destination.locationManager = locationManager
+            
+            destination.identifier = region.identifier
+            destination.radius = region.radius
         }
         
         if let destination = segue.destination as? EventsTableViewController {
@@ -177,7 +206,7 @@ extension RegionsListViewController: MKMapViewDelegate {
         let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: defaultReuseIdentifier,
                                                                    for: annotation)
         annotationView.canShowCallout = true
-        let rightButton = UIButton(type: .infoLight)
+        let rightButton = UIButton(type: .detailDisclosure)
         annotationView.rightCalloutAccessoryView = rightButton
         
         return annotationView
@@ -188,6 +217,7 @@ extension RegionsListViewController: MKMapViewDelegate {
         renderer.fillColor = UIColor.clear
         renderer.strokeColor = UIColor.blue
         renderer.lineWidth = 2
+        renderer.isAccessibilityElement = false
         return renderer
     }
     
@@ -195,5 +225,17 @@ extension RegionsListViewController: MKMapViewDelegate {
            annotationView view: MKAnnotationView,
                           calloutAccessoryControlTapped control: UIControl){
         self.performSegue(withIdentifier: "RegionDetail", sender: view.annotation)
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        let calloutView = view.rightCalloutAccessoryView
+        calloutView?.isAccessibilityElement = true
+        view.isAccessibilityElement = false
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        let calloutView = view.rightCalloutAccessoryView
+        calloutView?.isAccessibilityElement = false
+        view.isAccessibilityElement = true
     }
 }

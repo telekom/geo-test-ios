@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB0BAA5E287301BF0029E523 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0BAA5D287301BF0029E523 /* SettingsViewController.swift */; };
 		CB268BA0285A19DC00B16C3A /* PersistantStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB268B9F285A19DC00B16C3A /* PersistantStorage.swift */; };
+		CB50E6092872480A00A98D8C /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50E6082872480A00A98D8C /* Protocols.swift */; };
 		CB655F6628534E2600EBCABA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB655F6528534E2600EBCABA /* AppDelegate.swift */; };
 		CB655F6828534E2600EBCABA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB655F6728534E2600EBCABA /* SceneDelegate.swift */; };
 		CB655F6D28534E2600EBCABA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB655F6B28534E2600EBCABA /* Main.storyboard */; };
@@ -17,7 +19,7 @@
 		CB97AE3F286DC6410067B1BF /* RegionsListVC+CoreLocationsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB97AE3E286DC6410067B1BF /* RegionsListVC+CoreLocationsDelegate.swift */; };
 		CBBF88CF286F269B00E4E1F0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBBF88CD286F269B00E4E1F0 /* InfoPlist.strings */; };
 		CBBF88D2286F269B00E4E1F0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBBF88D0286F269B00E4E1F0 /* Localizable.strings */; };
-		CBE711EF2868EE36008F51C4 /* RegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE711EE2868EE36008F51C4 /* RegionViewController.swift */; };
+		CBE711EF2868EE36008F51C4 /* RegionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE711EE2868EE36008F51C4 /* RegionDetailViewController.swift */; };
 		CBE711F1286915A8008F51C4 /* EventRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE711F0286915A8008F51C4 /* EventRecord.swift */; };
 		CBE711F3286920FD008F51C4 /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE711F2286920FD008F51C4 /* EventsTableViewController.swift */; };
 		CBE71231286C7E00008F51C4 /* AppCenterAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CBE71230286C7E00008F51C4 /* AppCenterAnalytics */; };
@@ -27,7 +29,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB0BAA5D287301BF0029E523 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CB268B9F285A19DC00B16C3A /* PersistantStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistantStorage.swift; sourceTree = "<group>"; };
+		CB50E6082872480A00A98D8C /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		CB655F6228534E2600EBCABA /* GeofenceTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeofenceTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB655F6528534E2600EBCABA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB655F6728534E2600EBCABA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,7 +45,7 @@
 		CBBF88CE286F269B00E4E1F0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CBBF88D1286F269B00E4E1F0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CBBF88D3286F29ED00E4E1F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		CBE711EE2868EE36008F51C4 /* RegionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionViewController.swift; sourceTree = "<group>"; };
+		CBE711EE2868EE36008F51C4 /* RegionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionDetailViewController.swift; sourceTree = "<group>"; };
 		CBE711F0286915A8008F51C4 /* EventRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRecord.swift; sourceTree = "<group>"; };
 		CBE711F2286920FD008F51C4 /* EventsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		CBE71236286C7E7A008F51C4 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
@@ -83,10 +87,12 @@
 				CB655F6528534E2600EBCABA /* AppDelegate.swift */,
 				CBE71236286C7E7A008F51C4 /* Keys.swift */,
 				CB655F6728534E2600EBCABA /* SceneDelegate.swift */,
+				CB50E6082872480A00A98D8C /* Protocols.swift */,
 				CB655F7D2856A43B00EBCABA /* RegionsListViewController.swift */,
 				CB97AE3E286DC6410067B1BF /* RegionsListVC+CoreLocationsDelegate.swift */,
-				CBE711EE2868EE36008F51C4 /* RegionViewController.swift */,
+				CBE711EE2868EE36008F51C4 /* RegionDetailViewController.swift */,
 				CBE711F2286920FD008F51C4 /* EventsTableViewController.swift */,
+				CB0BAA5D287301BF0029E523 /* SettingsViewController.swift */,
 				CBE711F0286915A8008F51C4 /* EventRecord.swift */,
 				CB268B9F285A19DC00B16C3A /* PersistantStorage.swift */,
 				CB655F6B28534E2600EBCABA /* Main.storyboard */,
@@ -183,9 +189,11 @@
 			files = (
 				CB97AE3F286DC6410067B1BF /* RegionsListVC+CoreLocationsDelegate.swift in Sources */,
 				CBE711F1286915A8008F51C4 /* EventRecord.swift in Sources */,
+				CB0BAA5E287301BF0029E523 /* SettingsViewController.swift in Sources */,
 				CBE71237286C7E7A008F51C4 /* Keys.swift in Sources */,
 				CB655F6628534E2600EBCABA /* AppDelegate.swift in Sources */,
-				CBE711EF2868EE36008F51C4 /* RegionViewController.swift in Sources */,
+				CBE711EF2868EE36008F51C4 /* RegionDetailViewController.swift in Sources */,
+				CB50E6092872480A00A98D8C /* Protocols.swift in Sources */,
 				CB655F6828534E2600EBCABA /* SceneDelegate.swift in Sources */,
 				CB655F7E2856A43B00EBCABA /* RegionsListViewController.swift in Sources */,
 				CBE711F3286920FD008F51C4 /* EventsTableViewController.swift in Sources */,
@@ -371,7 +379,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.telekom.below.GeofenceTester;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -402,7 +410,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.telekom.below.GeofenceTester;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
