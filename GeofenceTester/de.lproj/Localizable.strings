@@ -7,6 +7,15 @@
 /* Visit with Coordinate Info */
 "Coordinate %.4f, %.4f" = "Koordinate %1$.4f, %2$.4f";
 
+/* Alert Button */
+"Delete" = "Löschen";
+
+/* Alert Title */
+"Delete Region?" = "Region Löschen?";
+
+/* Alert Body */
+"Do you really want to delete the region '%@'?" = "Soll die Region '%@' wirklich gelöscht werden?";
+
 /* Found visit in region info */
 "Found: %@" = "Identifiziert als: %@";
 
