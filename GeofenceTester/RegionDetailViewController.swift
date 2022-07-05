@@ -13,7 +13,7 @@ import AppCenterAnalytics
 class RegionDetailViewController: UIViewController, Loggable, LocationUser {
 
     var locationManager: CLLocationManager!
-    var logger: Logger!
+    var logger: os.Logger!
 
     @IBOutlet var identifierField: UITextField!
     @IBOutlet var radiusLabel: UILabel!

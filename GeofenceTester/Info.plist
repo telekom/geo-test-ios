@@ -25,14 +25,5 @@
 	<array>
 		<string>location</string>
 	</array>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>This is a region monitoring testing app. It needs background location updates</string>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>gps</string>
-		<string>location-services</string>
-	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>In Use will not do the trick</string>
 </dict>
 </plist>

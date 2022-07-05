@@ -16,7 +16,7 @@ class RegionsListViewController: UIViewController {
 
     var locationManager: CLLocationManager = CLLocationManager()
     var storage = PersistantStorage<EventRecord>()
-    private var logger = Logger()
+    private var logger = os.Logger()
     
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var addButton: UIBarButtonItem!
