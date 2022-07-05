@@ -125,9 +125,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pYo-z7-B7n">
-                                <rect key="frame" x="84" y="773" width="248" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pYo-z7-B7n">
+                                <rect key="frame" x="100.5" y="777" width="213.5" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Contact Alexander von Below"/>
                                 <connections>
@@ -141,13 +140,18 @@
                             <constraint firstItem="Uh8-Vt-H18" firstAttribute="leading" secondItem="aSJ-3D-P8v" secondAttribute="leading" constant="20" id="B4L-Dc-wpp"/>
                             <constraint firstAttribute="trailing" secondItem="9CP-Ze-oHL" secondAttribute="trailing" constant="20" symbolic="YES" id="E7T-Mm-gI6"/>
                             <constraint firstItem="eMq-lx-nFN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Uh8-Vt-H18" secondAttribute="trailing" constant="8" symbolic="YES" id="G1a-RN-7uU"/>
+                            <constraint firstItem="aSJ-3D-P8v" firstAttribute="bottom" secondItem="pYo-z7-B7n" secondAttribute="bottom" constant="34" id="Nb9-9D-GSn"/>
                             <constraint firstItem="9CP-Ze-oHL" firstAttribute="leading" secondItem="aSJ-3D-P8v" secondAttribute="leading" constant="20" id="PMu-Be-mDZ"/>
                             <constraint firstItem="eMq-lx-nFN" firstAttribute="top" secondItem="HWG-Yu-6t4" secondAttribute="topMargin" constant="39" id="QAl-jS-DcR"/>
                             <constraint firstItem="aSJ-3D-P8v" firstAttribute="trailing" secondItem="eMq-lx-nFN" secondAttribute="trailing" constant="20" id="WiV-jt-ech"/>
                             <constraint firstItem="9CP-Ze-oHL" firstAttribute="top" secondItem="eMq-lx-nFN" secondAttribute="bottom" constant="8" symbolic="YES" id="X9W-Wb-2C5"/>
                             <constraint firstItem="eMq-lx-nFN" firstAttribute="centerY" secondItem="Uh8-Vt-H18" secondAttribute="centerY" id="q8X-TL-DZ0"/>
+                            <constraint firstItem="pYo-z7-B7n" firstAttribute="centerX" secondItem="HWG-Yu-6t4" secondAttribute="centerX" id="tj3-gn-xNo"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pauseSwitch" destination="eMq-lx-nFN" id="NXw-JK-yun"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1VJ-An-WBD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
