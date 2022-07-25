@@ -92,10 +92,10 @@ class RegionDetailViewController: UIViewController, Loggable, LocationUser {
                                           style: .destructive,
                                           handler: { _ in
                 self.locationManager.stopMonitoring(for: region)
-            }))
-            self.present(alert, animated: true) {
                 self.performSegue(withIdentifier: "unwindSegue", sender: self)
-            }
+
+            }))
+            self.present(alert, animated: true) {}
         }
     }
     

@@ -16,20 +16,27 @@
   <a href="#licensing">Licensing</a>
 </p>
 
-The goal of this project is ... _TBD_
+A project to test the accuracy of iOS geofence and visits monitoring
 
 ## About this component
 
-_TBD_
+This is a sample app to test the accurarcy of iOS geofencing and vists monitoring. You can create new geofences, and you will receive a push notification when these geofences are entered or exited.
 
-## Development
+You will also receive a push message whenever iOS detects a 'Visit'.
 
-_TBD_
+All of these events are logged, the log can be shared using the usual iOS sharing tools.
+
+### Accessibility
+
+The goal for this tool is to be accessible. It includes a custom Voiceover rotor for the map. 
 
 ### Build
 
-_TBD_
-
+* Clone the project
+* Adjust Code Signing Team as appropriate
+* IF you want to use [MS AppCenter](https://appcenter.ms) for distribution AND you have an API Key, enter it in `GeofenceTester/Keys.swift`. **REMEMBER** Do not commit your secret keys to a public repository, push request, etc.
+* Build and run with Xcode 13.4 or later
+ 
 ## Code of Conduct
 
 This project has adopted the [Contributor Covenant](https://www.contributor-covenant.org/) in version 2.0 as our code of conduct. Please see the details in our [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md). All contributors must abide by the code of conduct.
