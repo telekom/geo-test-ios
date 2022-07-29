@@ -9,8 +9,8 @@
 </p>
 
 <p align="center">
-  <a href="#development">Development</a> •
-  <a href="#documentation">Documentation</a> •
+  <a href="#about-this-component">About This Component</a> •
+  <a href="#build">Build</a> •
   <a href="#support-and-feedback">Support</a> •
   <a href="#how-to-contribute">Contribute</a> •
   <a href="#licensing">Licensing</a>
@@ -25,6 +25,8 @@ This is a sample app to test the accurarcy of iOS geofencing and vists monitorin
 You will also receive a push message whenever iOS detects a 'Visit'.
 
 All of these events are logged, the log can be shared using the usual iOS sharing tools.
+
+Please use the App for your own testing, and feel free to contribute!
 
 ### Accessibility
 
@@ -46,10 +48,6 @@ This project has adopted the [Contributor Covenant](https://www.contributor-cove
 We decided to apply _English_ as the primary project language.  
 
 Consequently, all content will be made available primarily in English. We also ask all interested people to use English as language to create issues, in their code (comments, documentation etc.) and when you send requests to us. The application itself and all end-user facing content will be made available in other languages as needed.
-
-## Documentation
-
-The full documentation for this project can be found in _TBD_
 
 ## Support and Feedback
 
