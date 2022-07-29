@@ -30,7 +30,7 @@ All of these events are logged, the log can be shared using the usual iOS sharin
 
 The goal for this tool is to be accessible. It includes a custom Voiceover rotor for the map. 
 
-### Build
+## Build
 
 * Clone the project
 * Adjust Code Signing Team as appropriate

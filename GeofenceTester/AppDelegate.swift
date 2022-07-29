@@ -9,6 +9,7 @@ import UIKit
 import AppCenter
 import AppCenterAnalytics
 import AppCenterCrashes
+import AppCenterDistribute
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppCenter.start(withAppSecret: AppCenterKey,
                         services:[
                             Analytics.self,
-                            Crashes.self
+                            Crashes.self,
+                            Distribute.self
                         ])
         UserDefaults.standard.register(defaults: [PausesVisitAutomatically: true])
 
