@@ -1,9 +1,16 @@
-//
-//  SceneDelegate.swift
-//  GeofenceTester
-//
-//  Created by Alexander von Below on 10.06.22.
-//
+/*
+ * telekom / geo-test-ios
+ *
+ * SceneDelegate.swift
+ * Created by Alexander von Below on 10.06.22.
+ * Copyright (c) 2022 Deutsche Telekom AG
+ *
+ * This program is made available under the terms of the 
+ * MIT license which is available at
+ * https://opensource.org/licenses/MIT
+ *
+ * SPDX-License-Identifier: MIT 
+ */
 
 import UIKit
 
