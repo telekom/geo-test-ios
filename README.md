@@ -26,7 +26,7 @@ You will also receive a push message whenever iOS detects a 'Visit'.
 
 All of these events are logged, the log can be shared using the usual iOS sharing tools.
 
-Please use the App for your own testing, and feel free to contribute!
+Please use the App for your own testing, and feel free to contribute! Also, I am most interested in your results!
 
 ### Accessibility
 
