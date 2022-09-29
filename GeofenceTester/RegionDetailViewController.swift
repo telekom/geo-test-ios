@@ -31,7 +31,12 @@ class RegionDetailViewController: UIViewController, Loggable, LocationUser {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if let sheetController = self.presentationController as? UISheetPresentationController {
+            sheetController.detents = [.medium(), .large()]
+            sheetController.prefersGrabberVisible = true
+        }
+        
         identifierField.text = identifier;
         
         guard let input = radius else {
