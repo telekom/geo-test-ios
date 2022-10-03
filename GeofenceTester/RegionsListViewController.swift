@@ -21,6 +21,8 @@ let PausesVisitAutomatically = "PausesVisitAutomatically"
 
 class RegionsListViewController: UIViewController {
 
+    public static let UpdateNotificationName = Notification.Name.init("updateRegions")
+
     var locationManager: CLLocationManager = CLLocationManager()
     var storage = PersistantStorage<EventRecord>()
     internal var logger = os.Logger()
@@ -36,7 +38,6 @@ class RegionsListViewController: UIViewController {
         addButton.accessibilityLabel = NSLocalizedString("Settings", comment: "Accessibilty label for settings button")
 
         locationManager.delegate = self
-        
         registerMapAnnotationViews()
         
         switch self.locationManager.authorizationStatus {
@@ -66,6 +67,13 @@ class RegionsListViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         updateMap()
+        
+        NotificationCenter.default.addObserver(
+            forName: RegionsListViewController.UpdateNotificationName,
+            object: nil,
+            queue: .main) { _ in
+                self.updateMap()
+            }
     }
     
     let defaultReuseIdentifier = "defaultAnnotationView"
@@ -199,10 +207,6 @@ class RegionsListViewController: UIViewController {
         if let destination = segue.destination as? EventsTableViewController {
             destination.storage = storage
         }
-    }
-    
-    @IBAction func unwindAction(unwindSegue: UIStoryboardSegue) {
-        self.updateMap()
     }
 }
 

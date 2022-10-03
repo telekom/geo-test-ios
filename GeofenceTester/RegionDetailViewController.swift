@@ -85,7 +85,7 @@ class RegionDetailViewController: UIViewController, Loggable, LocationUser {
             locationManager.stopMonitoring(for: region)
             locationManager.startMonitoring(for: newRegion)
         }
-        self.performSegue(withIdentifier: "unwindSegue", sender: self)
+        self.updateMap()
     }
     
     @IBAction func deleteRegion() {
@@ -104,13 +104,17 @@ class RegionDetailViewController: UIViewController, Loggable, LocationUser {
                                           style: .destructive,
                                           handler: { _ in
                 self.locationManager.stopMonitoring(for: region)
-                self.performSegue(withIdentifier: "unwindSegue", sender: self)
-
+                self.updateMap()
             }))
             self.present(alert, animated: true) {}
         }
     }
     
+    private func updateMap () {
+        NotificationCenter.default.post(
+            name: RegionsListViewController.UpdateNotificationName,
+            object: nil)
+    }
     /*
     // MARK: - Navigation
 

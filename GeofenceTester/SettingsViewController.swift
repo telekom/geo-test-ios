@@ -14,6 +14,7 @@
 
 import UIKit
 import CoreLocation
+import os.log
 
 class SettingsViewController: UIViewController, LocationUser {
     
@@ -24,6 +25,11 @@ class SettingsViewController: UIViewController, LocationUser {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let sheetController = self.presentationController as? UISheetPresentationController {
+            sheetController.detents = [.medium(), .large()]
+            sheetController.prefersGrabberVisible = true
+        }
+
         let autoPaused = UserDefaults.standard.bool(forKey: PausesVisitAutomatically)
         pauseSwitch.isOn = autoPaused
     }
@@ -34,6 +40,69 @@ class SettingsViewController: UIViewController, LocationUser {
         UserDefaults.standard.set(autoPaused, forKey: PausesVisitAutomatically)
     }
 
+    @IBAction func clearLogs() {
+        presentClearAlert(
+            title: NSLocalizedString(
+                "Clear Log",
+                comment: ""),
+            message: NSLocalizedString(
+                "Are you sure you want to delete the complete log?",
+                comment: ""),
+            buttonTitle: "Clear Log",
+            handler: { _ in
+                do {
+                    let storage = PersistantStorage<EventRecord>()
+                    try storage.deleteAll()
+                } catch {
+                    os.Logger().error("\(error)")
+                }
+            })
+    }
+    
+    @IBAction func clearRegions() {
+        
+        presentClearAlert(
+            title: NSLocalizedString(
+                "Clear Regions",
+                comment: ""),
+            message: NSLocalizedString(
+                "Are you sure you want to delete all monitored regions?",
+                                       comment: ""),
+            buttonTitle: NSLocalizedString(
+                "Clear Regions",
+                comment: "")
+        ) { [self]_ in
+            for region in self.locationManager.monitoredRegions {
+                self.locationManager.stopMonitoring(for: region)
+                NotificationCenter.default.post(Notification(
+                    name: RegionsListViewController.UpdateNotificationName))
+            }
+        }
+    }
+    
+    func presentClearAlert(title: String?,
+                            message: String?,
+                            buttonTitle: String?,
+                            handler: @escaping (UIAlertAction) -> Void) {
+        
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(
+            title: buttonTitle,
+            style: .destructive,
+            handler: handler))
+        
+        alert.addAction(UIAlertAction(
+            title: NSLocalizedString(
+                "Cancel",
+                comment: ""),
+            style: .cancel))
+        self.present(
+            alert,
+            animated: true)
+    }
+    
     @IBAction func contactAlex() {
         let url = URL(string: "https://dt.enterprise.slack.com/user/@UDWJH0JE7")!
         UIApplication.shared.open(url)

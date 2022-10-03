@@ -30,6 +30,10 @@ class EventsTableViewController: UITableViewController {
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Event Cell")
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
+    
     @IBAction func share() {
         let text = storage.objects.reduce("") { partialResult, event in
             partialResult + event.debugDescription + "\n"

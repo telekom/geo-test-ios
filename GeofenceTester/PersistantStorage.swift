@@ -46,6 +46,12 @@ class PersistantStorage<T: Codable>: Storage {
         try save()
     }
      
+    func deleteAll() throws {
+        objects.removeAll()
+        let url = try fileURL()
+        try FileManager.default.removeItem(at: url)
+    }
+    
     private func fileURL() throws -> URL {
         let fm = FileManager.default
         var path: URL!
