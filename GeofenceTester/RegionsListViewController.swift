@@ -113,9 +113,9 @@ class RegionsListViewController: UIViewController {
                 }
                 
                 self.registerRegion(identifier: identifier, center: center)
-                DispatchQueue.main.async {
-                    self.updateMap()
-                }
+                NotificationCenter.default.post(
+                    name: RegionsListViewController.UpdateNotificationName,
+                    object: nil)
             }
         }))
         

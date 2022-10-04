@@ -21,7 +21,8 @@ class SettingsViewController: UIViewController, LocationUser {
     var locationManager: CLLocationManager!
 
     @IBOutlet var pauseSwitch: UISwitch!
-    
+    @IBOutlet var versionLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +33,16 @@ class SettingsViewController: UIViewController, LocationUser {
 
         let autoPaused = UserDefaults.standard.bool(forKey: PausesVisitAutomatically)
         pauseSwitch.isOn = autoPaused
+        if let infoDict = Bundle.main.infoDictionary,
+           let cfBundleVersion = infoDict["CFBundleVersion"],
+           let cfBundleShortVersion = infoDict["CFBundleShortVersionString"] {
+            let versionPretext = NSLocalizedString("Version:", comment: "")
+            versionLabel.text = "\(versionPretext) \(cfBundleShortVersion)(\(cfBundleVersion))"
+        } else {
+            versionLabel.text = NSLocalizedString(
+                "Version unknown",
+                comment: "")
+        }
     }
 
     @IBAction func toggleAutomaticPauses(_ sender: UISwitch) {
