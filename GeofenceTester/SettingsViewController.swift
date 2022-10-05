@@ -85,9 +85,9 @@ class SettingsViewController: UIViewController, LocationUser {
         ) { [self]_ in
             for region in self.locationManager.monitoredRegions {
                 self.locationManager.stopMonitoring(for: region)
-                NotificationCenter.default.post(Notification(
-                    name: RegionsListViewController.UpdateNotificationName))
             }
+            NotificationCenter.default.post(Notification(
+                name: RegionsListViewController.UpdateNotificationName))
         }
     }
     
