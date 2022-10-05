@@ -4,8 +4,14 @@
 /* Class = "UIButton"; configuration.title = "Change"; ObjectID = "cE5-Vd-Ysh"; */
 "cE5-Vd-Ysh.configuration.title" = "Ändern";
 
+/* Class = "UIButton"; configuration.title = "Clear Logs"; ObjectID = "ivp-SQ-Ptn"; */
+"ivp-SQ-Ptn.configuration.title" = "Log löschen";
+
 /* Class = "UILabel"; text = "Radius:"; ObjectID = "Jnz-UA-YoM"; */
 "Jnz-UA-YoM.text" = "Radius:";
+
+/* Class = "UIButton"; configuration.title = "Clear Regions"; ObjectID = "mNC-Mt-tfI"; */
+"mNC-Mt-tfI.configuration.title" = "Regionen löschen";
 
 /* Class = "UIButton"; configuration.title = "Delete"; ObjectID = "pRa-cH-jsG"; */
 "pRa-cH-jsG.configuration.title" = "Löschen";

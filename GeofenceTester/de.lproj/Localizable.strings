@@ -1,8 +1,20 @@
 /* Accessibilty label for add button */
 "Add Monitored Region at current location" = "Füge eine überwachte Region am aktuellen Ort hinzu";
 
+/* No comment provided by engineer. */
+"Are you sure you want to delete all monitored regions?" = "Möchtet Du wirklich alle überwachten Regionen löschen?";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete the complete log?" = "Möchtet Du das Log wirklich löschen?";
+
 /* New Region Alert */
 "Cancel" = "Abbrechen";
+
+/* No comment provided by engineer. */
+"Clear Log" = "Log löschen";
+
+/* No comment provided by engineer. */
+"Clear Regions" = "Regionen löschen";
 
 /* Visit with Coordinate Info */
 "Coordinate %.4f, %.4f" = "Koordinate %1$.4f, %2$.4f";
@@ -42,6 +54,12 @@
 
 /* Alert: Authorization to Localization denied */
 "This app requires the location services to be authorised" = "Die Ortungsdienste müssen für diese App zugelassen sein";
+
+/* No comment provided by engineer. */
+"Version unknown" = "Version unbekannt";
+
+/* No comment provided by engineer. */
+"Version:" = "Version";
 
 /* Push Notificaton Title */
 "Visit" = "Visit";
