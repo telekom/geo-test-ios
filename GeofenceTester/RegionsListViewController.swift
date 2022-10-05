@@ -26,6 +26,7 @@ class RegionsListViewController: UIViewController {
     var locationManager: CLLocationManager = CLLocationManager()
     var storage = PersistantStorage<EventRecord>()
     internal var logger = os.Logger()
+    var firstUse = true
     
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var addButton: UIBarButtonItem!
@@ -38,6 +39,10 @@ class RegionsListViewController: UIViewController {
         addButton.accessibilityLabel = NSLocalizedString("Settings", comment: "Accessibilty label for settings button")
 
         locationManager.delegate = self
+        
+        self.mapView.setCenter(
+            self.mapView.userLocation.coordinate,
+            animated: false)
         registerMapAnnotationViews()
         
         switch self.locationManager.authorizationStatus {
@@ -54,6 +59,13 @@ class RegionsListViewController: UIViewController {
                                           preferredStyle: .alert)
             self.present(alert, animated: true)
         }
+        
+        NotificationCenter.default.addObserver(
+            forName: RegionsListViewController.UpdateNotificationName,
+            object: nil,
+            queue: .main) { _ in
+                self.updateMap()
+            }
     }
     
     internal func startLocationServices() {
@@ -67,13 +79,6 @@ class RegionsListViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         updateMap()
-        
-        NotificationCenter.default.addObserver(
-            forName: RegionsListViewController.UpdateNotificationName,
-            object: nil,
-            queue: .main) { _ in
-                self.updateMap()
-            }
     }
     
     let defaultReuseIdentifier = "defaultAnnotationView"
@@ -211,6 +216,18 @@ class RegionsListViewController: UIViewController {
 }
 
 extension RegionsListViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        if self.locationManager.monitoredRegions.count == 0 {
+            if firstUse {
+                mapView.setCenter(
+                    userLocation.coordinate,
+                    animated: false)
+            }
+        }
+        firstUse = false
+    }
+
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !annotation.isKind(of: MKUserLocation.self) else {
             // Make a fast exit if the annotation is the `MKUserLocation`, as it's not an annotation view we wish to customize.
