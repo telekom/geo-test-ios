@@ -16,9 +16,10 @@
 		CB655F6F28534E2700EBCABA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB655F6E28534E2700EBCABA /* Assets.xcassets */; };
 		CB655F7228534E2700EBCABA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB655F7028534E2700EBCABA /* LaunchScreen.storyboard */; };
 		CB655F7E2856A43B00EBCABA /* RegionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB655F7D2856A43B00EBCABA /* RegionsListViewController.swift */; };
-		CB97AE3F286DC6410067B1BF /* RegionsListVC+CoreLocationsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB97AE3E286DC6410067B1BF /* RegionsListVC+CoreLocationsDelegate.swift */; };
+		CB97AE3F286DC6410067B1BF /* CoreLocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB97AE3E286DC6410067B1BF /* CoreLocationDelegate.swift */; };
 		CBBF88CF286F269B00E4E1F0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBBF88CD286F269B00E4E1F0 /* InfoPlist.strings */; };
 		CBBF88D2286F269B00E4E1F0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBBF88D0286F269B00E4E1F0 /* Localizable.strings */; };
+		CBE4CBAA2922B2B5003C0B26 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4CBA92922B2B5003C0B26 /* ErrorHandler.swift */; };
 		CBE711EF2868EE36008F51C4 /* RegionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE711EE2868EE36008F51C4 /* RegionDetailViewController.swift */; };
 		CBE711F1286915A8008F51C4 /* EventRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE711F0286915A8008F51C4 /* EventRecord.swift */; };
 		CBE711F3286920FD008F51C4 /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE711F2286920FD008F51C4 /* EventsTableViewController.swift */; };
@@ -42,10 +43,11 @@
 		CB655F7328534E2700EBCABA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB655F7D2856A43B00EBCABA /* RegionsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionsListViewController.swift; sourceTree = "<group>"; };
 		CB97AE3D286DB2840067B1BF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
-		CB97AE3E286DC6410067B1BF /* RegionsListVC+CoreLocationsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegionsListVC+CoreLocationsDelegate.swift"; sourceTree = "<group>"; };
+		CB97AE3E286DC6410067B1BF /* CoreLocationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLocationDelegate.swift; sourceTree = "<group>"; };
 		CBBF88CE286F269B00E4E1F0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CBBF88D1286F269B00E4E1F0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CBBF88D3286F29ED00E4E1F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CBE4CBA92922B2B5003C0B26 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		CBE711EE2868EE36008F51C4 /* RegionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionDetailViewController.swift; sourceTree = "<group>"; };
 		CBE711F0286915A8008F51C4 /* EventRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRecord.swift; sourceTree = "<group>"; };
 		CBE711F2286920FD008F51C4 /* EventsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
@@ -91,12 +93,13 @@
 				CB655F6728534E2600EBCABA /* SceneDelegate.swift */,
 				CB50E6082872480A00A98D8C /* Protocols.swift */,
 				CB655F7D2856A43B00EBCABA /* RegionsListViewController.swift */,
-				CB97AE3E286DC6410067B1BF /* RegionsListVC+CoreLocationsDelegate.swift */,
+				CB97AE3E286DC6410067B1BF /* CoreLocationDelegate.swift */,
 				CBF30A54287823A700A0D173 /* RegionsListVC+CustomRotor.swift */,
 				CBE711EE2868EE36008F51C4 /* RegionDetailViewController.swift */,
 				CBE711F2286920FD008F51C4 /* EventsTableViewController.swift */,
 				CB0BAA5D287301BF0029E523 /* SettingsViewController.swift */,
 				CBE711F0286915A8008F51C4 /* EventRecord.swift */,
+				CBE4CBA92922B2B5003C0B26 /* ErrorHandler.swift */,
 				CB268B9F285A19DC00B16C3A /* PersistantStorage.swift */,
 				CB655F6B28534E2600EBCABA /* Main.storyboard */,
 				CB655F6E28534E2700EBCABA /* Assets.xcassets */,
@@ -190,11 +193,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB97AE3F286DC6410067B1BF /* RegionsListVC+CoreLocationsDelegate.swift in Sources */,
+				CB97AE3F286DC6410067B1BF /* CoreLocationDelegate.swift in Sources */,
 				CBE711F1286915A8008F51C4 /* EventRecord.swift in Sources */,
 				CB0BAA5E287301BF0029E523 /* SettingsViewController.swift in Sources */,
 				CBE71237286C7E7A008F51C4 /* Keys.swift in Sources */,
 				CB655F6628534E2600EBCABA /* AppDelegate.swift in Sources */,
+				CBE4CBAA2922B2B5003C0B26 /* ErrorHandler.swift in Sources */,
 				CBE711EF2868EE36008F51C4 /* RegionDetailViewController.swift in Sources */,
 				CB50E6092872480A00A98D8C /* Protocols.swift in Sources */,
 				CB655F6828534E2600EBCABA /* SceneDelegate.swift in Sources */,

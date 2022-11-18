@@ -12,17 +12,20 @@
  * SPDX-License-Identifier: MIT 
  */
 
-import UIKit
 import AppCenter
 import AppCenterAnalytics
 import AppCenterCrashes
 import AppCenterDistribute
+import CoreLocation
+import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
+    var locationManager = CLLocationManager()
+    var locationDelegate = CoreLocationDelegate()
+    var errorHandler = ErrorHandler()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         AppCenter.start(withAppSecret: AppCenterKey,
@@ -33,6 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         ])
         UserDefaults.standard.register(defaults: [PausesVisitAutomatically: true])
 
+        self.locationDelegate.errorHandler = errorHandler
+        self.locationManager.delegate = self.locationDelegate
+        
         return true
     }
 
@@ -43,13 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to select a configuration to create the new scene with.
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
-
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-    }
-
 
 }
 

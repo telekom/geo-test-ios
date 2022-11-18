@@ -1,7 +1,7 @@
 /*
  * telekom / geo-test-ios
  *
- * RegionsListVC+CoreLocationsDelegate.swift
+ * CoreLocationDelegate.swift
  * Created by Alexander von Below on 30.06.22.
  * Copyright (c) 2022 Deutsche Telekom AG
  *
@@ -15,7 +15,12 @@
 import UIKit
 import CoreLocation
 
-extension RegionsListViewController: CLLocationManagerDelegate {
+class CoreLocationDelegate: NSObject, CLLocationManagerDelegate {
+    
+    var storage = PersistantStorage<EventRecord>()
+    var errorHandler = ErrorHandler()
+    var authorisationSuccessful: (()-> Void)?
+    
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         process(event: .ENTER, info: region.identifier)
     }
@@ -28,7 +33,7 @@ extension RegionsListViewController: CLLocationManagerDelegate {
         let visitLocation = CLLocation(latitude: visit.coordinate.latitude,
                                        longitude: visit.coordinate.longitude)
         let info: String
-        if let matchingRegion = locationManager.monitoredRegions.first(where:{ region in
+        if let matchingRegion = manager.monitoredRegions.first(where:{ region in
             guard let region = region as? CLCircularRegion else {
                 return false
             }
@@ -73,7 +78,7 @@ extension RegionsListViewController: CLLocationManagerDelegate {
             try storage.store(eventRecord)
         }
         catch let error {
-            self.handleError(error)
+            self.errorHandler.handleError(error)
         }
         let request = UNNotificationRequest(identifier: UUID().uuidString,
                                             content: content,
@@ -85,7 +90,7 @@ extension RegionsListViewController: CLLocationManagerDelegate {
                           monitoringDidFailFor region: CLRegion?,
                           withError error: Error
     ) {
-        self.handleError(error)
+        self.errorHandler.handleError(error)
     }
     
     func locationManager(_ manager: CLLocationManager,
@@ -93,19 +98,22 @@ extension RegionsListViewController: CLLocationManagerDelegate {
         switch status {
         case .restricted, .denied:
             // Disable your app's location features
-            self.handleError("Warning: Location restricted or denied")
+            self.errorHandler.handleError("Warning: Location restricted or denied")
             
         case .authorizedWhenInUse:
             // Enable your app's location features.
-            self.handleError("Warning: Location InUse Only")
+            self.errorHandler.handleError("Warning: Location InUse Only")
             
         case .authorizedAlways:
-            self.startLocationServices()
+            if let authorisationSuccessful = self.authorisationSuccessful {
+                authorisationSuccessful()
+            }
+            // self.startLocationServices()
             
         case .notDetermined:
-            self.handleError("Warning: Location Not Determined")
+            self.errorHandler.handleError("Warning: Location Not Determined")
         default:
-            self.handleError("Warning: Switch fell through")
+            self.errorHandler.handleError("Warning: Switch fell through")
         }
     }
 }

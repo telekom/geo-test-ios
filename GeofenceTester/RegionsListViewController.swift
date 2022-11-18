@@ -14,8 +14,6 @@
 
 import UIKit
 import MapKit
-import os.log
-import AppCenterAnalytics
 
 let PausesVisitAutomatically = "PausesVisitAutomatically"
 
@@ -23,9 +21,9 @@ class RegionsListViewController: UIViewController {
 
     public static let UpdateNotificationName = Notification.Name.init("updateRegions")
 
-    var locationManager: CLLocationManager = CLLocationManager()
-    var storage = PersistantStorage<EventRecord>()
-    internal var logger = os.Logger()
+    var locationManager: CLLocationManager!
+    var errorHandler: ErrorHandler!
+    
     var firstUse = true
     
     @IBOutlet var mapView: MKMapView!
@@ -37,8 +35,6 @@ class RegionsListViewController: UIViewController {
                 
         addButton.accessibilityLabel = NSLocalizedString("Add Monitored Region at current location", comment: "Accessibilty label for add button")
         addButton.accessibilityLabel = NSLocalizedString("Settings", comment: "Accessibilty label for settings button")
-
-        locationManager.delegate = self
         
         self.mapView.setCenter(
             self.mapView.userLocation.coordinate,
@@ -72,6 +68,7 @@ class RegionsListViewController: UIViewController {
         self.mapView.showsUserLocation = true
         mapView.setCenter(mapView.userLocation.coordinate, animated: true)
         locationManager.startMonitoringVisits()
+        locationManager.startMonitoringSignificantLocationChanges()
         
         let pauses = UserDefaults.standard.bool(forKey: PausesVisitAutomatically)
         locationManager.pausesLocationUpdatesAutomatically = pauses
@@ -113,7 +110,7 @@ class RegionsListViewController: UIViewController {
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { [self] granted, error in
                 
                 if let error = error {
-                    self.handleError("Error in requestAuthorization: \(error.localizedDescription)")
+                    self.errorHandler.handleError("Error in requestAuthorization: \(error.localizedDescription)")
                     return
                 }
                 
@@ -129,7 +126,7 @@ class RegionsListViewController: UIViewController {
     
     private func registerRegion(identifier: String, center: CLLocationCoordinate2D) {
         guard CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) else {
-            self.handleError("Circular Region Monitoring not available")
+            self.errorHandler.handleError("Circular Region Monitoring not available")
             return
         }
         // Register the region.
@@ -171,15 +168,6 @@ class RegionsListViewController: UIViewController {
         mapView.showAnnotations(mapAnnotations, animated: true)
     }
        
-    internal func handleError (_ error: Error) {
-        handleError(error.localizedDescription)
-    }
-    
-    internal func handleError (_ error: String) {
-        Analytics.trackEvent(error, withProperties: [:], flags: .critical)
-        logger.error("\(error)")
-    }
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -190,12 +178,12 @@ class RegionsListViewController: UIViewController {
         }
         
         if var destination = segue.destination as? Loggable {
-            destination.logger = logger
+            destination.logger = self.errorHandler.logger
         }
 
         if let destination = segue.destination as? RegionDetailViewController {
             guard let annotation = sender as? MKAnnotation else {
-                self.handleError("Sender was not MKAnnotation")
+                self.errorHandler.handleError("Sender was not MKAnnotation")
                 return
             }
             guard let identifier = annotation.title,
@@ -210,7 +198,8 @@ class RegionsListViewController: UIViewController {
         }
         
         if let destination = segue.destination as? EventsTableViewController {
-            destination.storage = storage
+            guard let lcd = locationManager.delegate as? CoreLocationDelegate else { return }
+            destination.storage = lcd.storage
         }
     }
 }

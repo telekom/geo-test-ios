@@ -59,7 +59,9 @@ class SettingsViewController: UIViewController, LocationUser {
             message: NSLocalizedString(
                 "Are you sure you want to delete the complete log?",
                 comment: ""),
-            buttonTitle: "Clear Log",
+            buttonTitle: NSLocalizedString(
+                "Clear Log",
+                comment: ""),
             handler: { _ in
                 do {
                     let storage = PersistantStorage<EventRecord>()

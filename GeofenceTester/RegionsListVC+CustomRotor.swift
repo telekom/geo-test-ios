@@ -26,11 +26,11 @@ extension RegionsListViewController {
             
             // which element is currently highlighted
             if (predicate.currentItem.targetElement == nil) {
-                self.logger.info("Current Item Target Element is nil")
+                self.errorHandler.logger.info("Current Item Target Element is nil")
             }
             let currentAnnotationView = predicate.currentItem.targetElement as? MKAnnotationView
             if (currentAnnotationView == nil) {
-                self.logger.error("Target Element is \(predicate.currentItem.targetElement.debugDescription)")
+                self.errorHandler.logger.error("Target Element is \(predicate.currentItem.targetElement.debugDescription)")
             }
             let currentAnnotation = (currentAnnotationView?.annotation as? MKAnnotation)
             
@@ -63,13 +63,13 @@ extension RegionsListViewController {
                 self.mapView.setCenter(requestedAnnotation.coordinate, animated: false)
                 if let annotationView = self.mapView.view(for: requestedAnnotation) {
                     let title: String = (requestedAnnotation.title ?? "Unknown") ?? "Unknown"
-                    self.logger.info("We want to be returning \(title) Index \(currentIndex)")
+                    self.errorHandler.logger.info("We want to be returning \(title) Index \(currentIndex)")
                     return UIAccessibilityCustomRotorItemResult(targetElement: annotationView, targetRange: nil)
                 }
                 
                 currentIndex = nextIndex(currentIndex)
             }
-            self.logger.info("We have nothing")
+            self.errorHandler.logger.info("We have nothing")
             return nil
         }
         self.mapView.accessibilityCustomRotors = [markerRotor]
